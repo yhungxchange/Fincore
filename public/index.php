@@ -15,4 +15,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auth->login();
 }
 
-require __DIR__ . '/../views/login.php';
+require __DIR__ . '/../views/register.php';
