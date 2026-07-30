@@ -32,67 +32,84 @@
 
         <ul class="menu">
 
-            <li class="active">
-                <a href="#">
-                    🏠 Dashboard
-                </a>
-            </li>
+<li class="active">
+<a href="#">
+<i class="fa-solid fa-house"></i>
+<span>Dashboard</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    💰 Wallet
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-wallet"></i>
+<span>Wallet</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    📱 Airtime
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-money-bill-transfer"></i>
+<span>Transfer</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    🌐 Data
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-mobile-screen"></i>
+<span>Airtime</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    📺 Cable TV
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-wifi"></i>
+<span>Data</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    ⚡ Electricity
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-tv"></i>
+<span>Cable TV</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    💸 Transfer
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-bolt"></i>
+<span>Electricity</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    📜 Transactions
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-clock-rotate-left"></i>
+<span>Transactions</span>
+</a>
+</li>
 
-            <li>
-                <a href="#">
-                    👤 Profile
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-user"></i>
+<span>Profile</span>
+</a>
+</li>
 
-            <li>
-                <a href="logout.php">
-                    🚪 Logout
-                </a>
-            </li>
+<li>
+<a href="#">
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+</a>
+</li>
 
-        </ul>
+<li>
+<a href="logout.php">
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Logout</span>
+</a>
+</li>
+
+    </ul>
 
     </aside>
 
