@@ -118,3 +118,5 @@ class AuthController
     header("Location: dashboard.php");
     exit;
 }
+    
+}
