@@ -1,51 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinCore Dashboard</title>
 
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FinCore Dashboard</title>
+
+<link rel="stylesheet" href="assets/css/dashboard.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="dashboard">
 
     <!-- Sidebar -->
 
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
 
         <div class="logo">
-            FinCore
+
+            <h2>FinCore</h2>
+
+            <p>Digital Banking</p>
+
         </div>
 
-        <ul>
+        <ul class="menu">
 
-            <li><a href="#" class="active">🏠 Dashboard</a></li>
+            <li class="active">
+                <a href="#">
+                    🏠 Dashboard
+                </a>
+            </li>
 
-            <li><a href="#">👛 Wallet</a></li>
+            <li>
+                <a href="#">
+                    💰 Wallet
+                </a>
+            </li>
 
-            <li><a href="#">💰 Deposit</a></li>
+            <li>
+                <a href="#">
+                    📱 Airtime
+                </a>
+            </li>
 
-            <li><a href="#">💸 Transfer</a></li>
+            <li>
+                <a href="#">
+                    🌐 Data
+                </a>
+            </li>
 
-            <li><a href="#">📱 Airtime & Data</a></li>
+            <li>
+                <a href="#">
+                    📺 Cable TV
+                </a>
+            </li>
 
-            <li><a href="#">📺 Bills Payment</a></li>
+            <li>
+                <a href="#">
+                    ⚡ Electricity
+                </a>
+            </li>
 
-            <li><a href="#">📜 Transactions</a></li>
+            <li>
+                <a href="#">
+                    💸 Transfer
+                </a>
+            </li>
 
-            <li><a href="#">💳 Cards</a></li>
+            <li>
+                <a href="#">
+                    📜 Transactions
+                </a>
+            </li>
 
-            <li><a href="#">👤 Beneficiaries</a></li>
+            <li>
+                <a href="#">
+                    👤 Profile
+                </a>
+            </li>
 
-            <li><a href="#">⚙ Settings</a></li>
-
-            <li><a href="#">🛟 Support</a></li>
-
-            <li style="margin-top:30px;">
-                <a href="logout.php">🚪 Logout</a>
+            <li>
+                <a href="logout.php">
+                    🚪 Logout
+                </a>
             </li>
 
         </ul>
@@ -56,94 +98,161 @@
 
     <main class="main">
 
-        <!-- Top -->
+        <!-- Top Bar -->
 
-        <div class="topbar">
+        <header class="topbar">
 
-            <h2>
-                Welcome back,
-                <?= htmlspecialchars($_SESSION['username']); ?> 👋
-            </h2>
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
 
-        </div>
-
-        <!-- Cards -->
-
-        <div class="grid">
-
-            <div class="card wallet">
-
-                <small>Wallet Balance</small>
+            <div class="welcome">
 
                 <h2>
-                    ₦<?= number_format($balance,2); ?>
+                    Welcome,
+                    <?= htmlspecialchars($_SESSION['username']); ?>
                 </h2>
 
-                <p>Available Balance</p>
+                <span>
+                    FinCore Digital Banking
+                </span>
 
             </div>
 
-            <div class="card">
+            <div class="profile">
 
-                <h3>Total Deposit</h3>
+                🔔
 
-                <h2>₦0.00</h2>
+                <div class="avatar">
 
-                <small>This Month</small>
+                    <?= strtoupper(substr($_SESSION['username'],0,1)); ?>
+
+                </div>
 
             </div>
 
-            <div class="card">
+        </header>
 
-                <h3>Total Spent</h3>
+        <!-- Wallet section starts here -->
 
-                <h2>₦0.00</h2>
+        <section id="wallet-section">
 
-                <small>This Month</small>
+    <div class="cards">
+
+        <!-- Wallet Card -->
+
+        <div class="wallet-card">
+
+            <div class="wallet-header">
+
+                <div>
+
+                    <p>Available Balance</p>
+
+                    <h1>
+                        ₦<?= number_format($balance,2); ?>
+                    </h1>
+
+                </div>
+
+                <div class="wallet-icon">
+                    💳
+                </div>
+
+            </div>
+
+            <div class="wallet-buttons">
+
+                <button class="deposit-btn">
+
+                    💰 Deposit
+
+                </button>
+
+                <button class="transfer-btn">
+
+                    💸 Transfer
+
+                </button>
 
             </div>
 
         </div>
 
-        <!-- Quick Actions -->
+        <!-- Statistics -->
 
-        <h2 style="margin-top:35px;">
-            Quick Actions
-        </h2>
+        <div class="stats-card">
 
-        <div class="actions">
+            <h3>Total Deposit</h3>
 
-            <div class="action-card">📱<br>Airtime</div>
+            <h2>₦0.00</h2>
 
-            <div class="action-card">🌐<br>Data</div>
-
-            <div class="action-card">📺<br>Cable</div>
-
-            <div class="action-card">⚡<br>Electricity</div>
-
-            <div class="action-card">💸<br>Transfer</div>
-
-            <div class="action-card">➕<br>More</div>
+            <span>This Month</span>
 
         </div>
 
-        <!-- Transactions -->
+        <div class="stats-card">
 
-        <h2 style="margin-top:40px;">
-            Recent Transactions
-        </h2>
+            <h3>Total Transfer</h3>
 
-        <div class="card" style="margin-top:15px;">
+            <h2>₦0.00</h2>
 
-            <p>No transactions yet.</p>
+            <span>This Month</span>
 
         </div>
 
-    </main>
+        <div class="stats-card">
 
-</div>
+            <h3>Total Transactions</h3>
 
-<script src="../assets/js/dashboard.js"></script>
+            <h2>0</h2>
 
-</body>
-</html>
+            <span>Completed</span>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="quick-actions">
+
+        <h2>Quick Actions</h2>
+
+        <div class="actions-grid">
+
+            <div class="action-box">
+                📱
+                <span>Airtime</span>
+            </div>
+
+            <div class="action-box">
+                🌐
+                <span>Data</span>
+            </div>
+
+            <div class="action-box">
+                📺
+                <span>Cable TV</span>
+            </div>
+
+            <div class="action-box">
+                ⚡
+                <span>Electricity</span>
+            </div>
+
+            <div class="action-box">
+                💸
+                <span>Transfer</span>
+            </div>
+
+            <div class="action-box">
+                ➕
+                <span>More</span>
+            </div>
+
+        </div>
+
+    </div>
+
+                                 </section>
