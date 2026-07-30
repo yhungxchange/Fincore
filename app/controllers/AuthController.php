@@ -155,43 +155,68 @@ if (empty($password)) {
     }
 
     public function login()
-    {
-        $email = trim($_POST['email']);
-        $password = $_POST['password'];
+{
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
 
-        if (empty($email) || empty($password)) {
-            die("Email and Password are required.");
-        }
+    $errors = [];
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            die("Please enter a valid email address.");
-        }
+    // Validate Email
+    if (empty($email)) {
+        $errors['email'] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Please enter a valid email address.";
+    }
 
-        $stmt = $this->pdo->prepare("
-            SELECT *
-            FROM users
-            WHERE email = :email
-            LIMIT 1
-        ");
+    // Validate Password
+    if (empty($password)) {
+        $errors['password'] = "Password is required.";
+    }
 
-        $stmt->execute([
-            'email' => $email
-        ]);
+    // Save old input
+    $_SESSION['old'] = [
+        'email' => $email
+    ];
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$user) {
-            die("Invalid Email or Password.");
-        }
-
-        if (!password_verify($password, $user['password_hash'])) {
-            die("Invalid Email or Password.");
-        }
-
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-
-        header("Location: dashboard.php");
+    // Return validation errors
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        header("Location: login.php");
         exit;
     }
+
+    // Find user
+    $stmt = $this->pdo->prepare("
+        SELECT *
+        FROM users
+        WHERE email = :email
+        LIMIT 1
+    ");
+
+    $stmt->execute([
+        'email' => $email
+    ]);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Invalid login
+    if (!$user || !password_verify($password, $user['password_hash'])) {
+
+        $_SESSION['errors'] = [
+            'general' => "Invalid email or password."
+        ];
+
+        header("Location: login.php");
+        exit;
+    }
+
+    // Login successful
+    unset($_SESSION['errors']);
+    unset($_SESSION['old']);
+
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+
+    header("Location: dashboard.php");
+    exit;
 }
