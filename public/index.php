@@ -12,7 +12,7 @@ $pdo = $db->connection();
 $auth = new AuthController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $auth->login();
+    $auth->register();
 }
 
 require __DIR__ . '/../views/register.php';
