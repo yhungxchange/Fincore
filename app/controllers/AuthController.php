@@ -81,3 +81,5 @@ public function register()
 
     echo "✅ Registration Successful!";
 }
+    
+}
