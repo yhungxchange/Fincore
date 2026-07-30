@@ -18,7 +18,7 @@
 <div class="hero-card">
 
 <img
-src="assets/images/logo.png"
+src="/assets/images/logo.png"
 class="logo"
 alt="FinCore Logo"
 >
