@@ -1,14 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const menuButton = document.querySelector(".menu-btn");
-    const sidebar = document.querySelector(".sidebar");
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
 
-    if (menuButton && sidebar) {
+    if(menuBtn){
 
-        menuButton.addEventListener("click", function () {
+        menuBtn.addEventListener("click", () => {
+
             sidebar.classList.toggle("active");
+
         });
 
     }
+
+    document.addEventListener("click", (e)=>{
+
+        if(window.innerWidth <= 768){
+
+            if(
+                !sidebar.contains(e.target) &&
+                !menuBtn.contains(e.target)
+            ){
+
+                sidebar.classList.remove("active");
+
+            }
+
+        }
+
+    });
 
 });
