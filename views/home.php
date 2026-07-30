@@ -5,15 +5,11 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-FinCore | Smart • Secure • Seamless
-</title>
+<title>FinCore | Smart • Secure • Seamless</title>
 
-<link rel="stylesheet"
-href="/assets/css/auth.css">
+<link rel="stylesheet" href="/assets/css/home.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -22,44 +18,43 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <body>
 
-<!-- NAVBAR -->
+<nav class="navbar">
 
-<header class="navbar">
-
-<div class="logo-box">
+<div class="logo-area">
 
 <img
 src="/assets/images/logo.png"
-alt="FinCore Logo"
 class="logo">
 
-<div>
-
-<h2>FinCore</h2>
-
-<span>Digital Banking</span>
+<span>FinCore</span>
 
 </div>
 
-</div>
+<ul class="nav-links">
 
-<nav>
+<li><a href="#">Home</a></li>
 
-<a href="/home.php">Home</a>
+<li><a href="#features">Features</a></li>
 
-<a href="/login.php">Login</a>
+<li><a href="#services">Services</a></li>
 
-<a href="/register.php" class="register-btn">
+<li><a href="/login.php">Login</a></li>
+
+<li>
+
+<a
+href="/register.php"
+class="register-btn">
 
 Create Account
 
 </a>
 
+</li>
+
+</ul>
+
 </nav>
-
-</header>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -67,30 +62,304 @@ Create Account
 
 <h1>
 
-The Future Of
+Bank Smarter.<br>
 
-<span>Digital Banking</span>
-
-Starts Here.
+Live Better.
 
 </h1>
 
 <p>
 
-Manage your money confidently with secure wallet funding,
-instant bank transfers, airtime recharge,
-SME data, cable subscriptions,
-electricity bill payments and more...
+FinCore is your trusted digital banking platform for Wallet Funding, Transfers, Airtime, Data, Cable TV and Bill Payments.
 
-All from one powerful platform.
+Fast.
+
+Secure.
+
+Reliable.
+
+Built for everyone.
 
 </p>
 
 <div class="hero-buttons">
 
-<a href="/register.php" class="primary-btn">
+<a
+href="/register.php"
+class="primary-btn">
 
-Create Account
+Create Free Account
+
+</a>
+
+<a
+href="/login.php"
+class="secondary-btn">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="floating-card card1">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Wallet</h3>
+
+<p>
+
+Instant Funding
+
+</p>
+
+</div>
+
+<div class="floating-card card2">
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+<h3>Airtime</h3>
+
+<p>
+
+Recharge Anytime
+
+</p>
+
+</div>
+
+<div class="floating-card card3">
+
+<i class="fa-solid fa-wifi"></i>
+
+<h3>Data</h3>
+
+<p>
+
+Affordable Plans
+
+</p>
+
+</div>
+
+<div class="floating-card card4">
+
+<i class="fa-solid fa-bolt"></i>
+
+<h3>Bills</h3>
+
+<p>
+
+Pay Easily
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="features" class="features">
+
+<h2>Why Choose FinCore?</h2>
+
+<p class="section-text">
+
+Experience a smarter, faster and safer way to manage your finances.
+
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>Secure Banking</h3>
+
+<p>
+
+Your account is protected with modern security technologies.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-bolt"></i>
+
+<h3>Lightning Fast</h3>
+
+<p>
+
+Instant airtime, transfers, bill payments and wallet funding.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-globe"></i>
+
+<h3>Available 24/7</h3>
+
+<p>
+
+Access your account anytime from anywhere.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-headset"></i>
+
+<h3>Reliable Support</h3>
+
+<p>
+
+Our support team is always ready to help.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="services" class="services">
+
+<h2>Our Services</h2>
+
+<p class="section-text">
+
+Everything you need in one secure platform.
+
+</p>
+
+<div class="service-grid">
+
+<div class="service-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Wallet Funding</h3>
+
+</div>
+
+<div class="service-card">
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+<h3>Money Transfer</h3>
+
+</div>
+
+<div class="service-card">
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
+<h3>Airtime Top-up</h3>
+
+</div>
+
+<div class="service-card">
+
+<i class="fa-solid fa-wifi"></i>
+
+<h3>Data Subscription</h3>
+
+</div>
+
+<div class="service-card">
+
+<i class="fa-solid fa-tv"></i>
+
+<h3>Cable TV</h3>
+
+</div>
+
+<div class="service-card">
+
+<i class="fa-solid fa-lightbulb"></i>
+
+<h3>Electricity Bills</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats-section">
+
+<div class="stat-card">
+
+<h2>99.9%</h2>
+
+<span>Platform Uptime</span>
+
+</div>
+
+<div class="stat-card">
+
+<h2>24/7</h2>
+
+<span>Instant Services</span>
+
+</div>
+
+<div class="stat-card">
+
+<h2>100%</h2>
+
+<span>Secure Transactions</span>
+
+</div>
+
+<div class="stat-card">
+
+<h2>Fast</h2>
+
+<span>Processing Speed</span>
+
+</div>
+
+</section>
+
+<section class="cta-section">
+
+<h2>
+
+Ready to experience smarter digital banking?
+
+</h2>
+
+<p>
+
+Join FinCore today and enjoy secure wallet funding,
+instant transfers, airtime, data subscriptions,
+bill payments and much more.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="/register.php"
+class="primary-btn">
+
+Get Started
 
 </a>
 
@@ -103,174 +372,50 @@ Login
 
 </div>
 
-<div class="features">
+</section>
 
-<div>
+<footer class="footer">
 
-<i class="fa-solid fa-shield-halved"></i>
-
-<span>100% Secure</span>
-
-</div>
-
-<div>
-
-<i class="fa-solid fa-bolt"></i>
-
-<span>Instant Transactions</span>
-
-</div>
-
-<div>
-
-<i class="fa-solid fa-headset"></i>
-
-<span>24/7 Support</span>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<div class="phone-card">
+<div class="footer-logo">
 
 <img
 src="/assets/images/logo.png"
-class="phone-logo">
+class="logo">
 
-<h3>FinCore Wallet</h3>
-
-<h1>₦ ******</h1>
+<h2>FinCore</h2>
 
 <p>
 
-Fast • Safe • Reliable
+Smart • Secure • Seamless
 
 </p>
 
 </div>
 
-</div>
+<div class="footer-links">
 
-</section>
+<a href="#">About</a>
 
-<!-- SERVICES -->
+<a href="#">Privacy</a>
 
-<section class="services">
+<a href="#">Terms</a>
 
-<h2>Our Services</h2>
-
-<p>
-Everything you need in one secure platform.
-</p>
-
-<div class="service-grid">
-
-<div class="service-card">
-<i class="fa-solid fa-wallet"></i>
-<h3>Wallet</h3>
-<p>Fund and manage your wallet securely.</p>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-money-bill-transfer"></i>
-<h3>Transfer</h3>
-<p>Send money instantly to any bank.</p>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-mobile-screen"></i>
-<h3>Airtime</h3>
-<p>Recharge all Nigerian networks.</p>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-wifi"></i>
-<h3>SME Data</h3>
-<p>Affordable data bundles anytime.</p>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-tv"></i>
-<h3>Cable TV</h3>
-<p>DSTV, GOTV and Startimes subscriptions.</p>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-bolt"></i>
-<h3>Electricity</h3>
-<p>Pay electricity bills in seconds.</p>
-</div>
+<a href="#">Support</a>
 
 </div>
 
-</section>
+<p class="copyright">
 
-<!-- WHY FINCORE -->
-
-<section class="why">
-
-<h2>Why Choose FinCore?</h2>
-
-<div class="why-grid">
-
-<div>
-
-<i class="fa-solid fa-lock"></i>
-
-<h3>Bank-Level Security</h3>
-
-<p>
-Your account and transactions are protected with modern security practices.
-</p>
-
-</div>
-
-<div>
-
-<i class="fa-solid fa-gauge-high"></i>
-
-<h3>Fast Transactions</h3>
-
-<p>
-Wallet funding, transfers and bill payments processed quickly.
-</p>
-
-</div>
-
-<div>
-
-<i class="fa-solid fa-users"></i>
-
-<h3>User Friendly</h3>
-
-<p>
-Simple interface designed for everyone.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<p>
-
-© 2026 FinCore Digital Banking.
-
-All Rights Reserved.
+© 2026 FinCore. All Rights Reserved.
 
 </p>
 
 </footer>
 
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+
 </body>
 
-  </html>
+</html>
