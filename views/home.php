@@ -49,7 +49,7 @@ class="logo">
 
 <a href="/login.php">Login</a>
 
-<a href="/index.php" class="register-btn">
+<a href="/register.php" class="register-btn">
 
 Create Account
 
@@ -88,8 +88,7 @@ All from one powerful platform.
 
 <div class="hero-buttons">
 
-<a href="/index.php"
-class="primary-btn">
+<a href="/index.php" class="register-btn">
 
 Create Free Account
 
