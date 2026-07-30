@@ -253,6 +253,43 @@
 
         </div>
 
+        <!-- Recent Transactions -->
+
+<div class="transactions">
+
+    <h2>Recent Transactions</h2>
+
+    <div class="transaction-card">
+
+        <table class="transaction-table">
+
+            <tr>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>No Transactions Yet</td>
+                <td>₦0.00</td>
+                <td class="status-pending">
+                    Waiting
+                </td>
+            </tr>
+
+        </table>
+
     </div>
 
-                                 </section>
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="assets/js/dashboard.js"></script>
+
+</body>
+        </html>
