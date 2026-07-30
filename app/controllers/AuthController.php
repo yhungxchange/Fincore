@@ -1,4 +1,5 @@
 <?php
+
 class AuthController
 {
     private $pdo;
@@ -49,7 +50,7 @@ class AuthController
         // Hash password
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert user
+        // Save user
         $insert = $this->pdo->prepare("
             INSERT INTO users
             (
@@ -77,7 +78,8 @@ class AuthController
             'password_hash' => $passwordHash
         ]);
 
-        echo "✅ Registration Successful!";
+        header("Location: login.php");
+        exit;
     }
 
     public function login()
