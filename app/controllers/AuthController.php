@@ -15,42 +15,51 @@ class AuthController
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
         $phone = preg_replace('/\D/', '', trim($_POST['phone']));
-        $password = $_POST['password'];
+        $password = $_POST['password'];$errors = [];
 
-        // Required fields
-        if (
-            empty($fullName) ||
-            empty($username) ||
-            empty($email) ||
-            empty($phone) ||
-            empty($password)
-        ) {
-            die("All fields are required.");
-        }
+ if (empty($fullName)) {
+    $errors['full_name'] = "Full name is required.";
+}
+
+if (empty($username)) {
+    $errors['username'] = "Username is required.";
+}
+
+if (empty($email)) {
+    $errors['email'] = "Email is required.";
+}
+
+if (empty($phone)) {
+    $errors['phone'] = "Phone number is required.";
+}
+
+if (empty($password)) {
+    $errors['password'] = "Password is required.";
+}
 
         // Full name validation
         if (strlen($fullName) < 5) {
-            die("Full name must be at least 5 characters.");
+            $errors['full_name'] = "Full name must be at least 5 characters.";
         }
 
         // Username validation
         if (strlen($username) < 5) {
-            die("Username must be at least 5 characters.");
+            $errors['username'] = "Username must be at least 5 characters.";
         }
 
         // Email validation
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            die("Please enter a valid email address.");
+            $errors['email'] = "Please enter a valid email address.";
         }
 
         // Phone validation
         if (strlen($phone) < 11 || strlen($phone) > 14) {
-            die("Phone number must contain between 11 and 14 digits.");
+            $errors['phone'] = "Phone number must contain between 11 and 14 digits.";
         }
 
         // Password validation
         if (strlen($password) < 5) {
-            die("Password must be at least 5 characters.");
+            $errors['password'] = "Password must be at least 5 characters.";
         }
 
         // Check if username, email or phone already exists
@@ -69,11 +78,26 @@ class AuthController
         ]);
 
         if ($check->fetch()) {
-            die("Username, Email or Phone already exists.");
+    $errors['general'] = "Username, Email or Phone already exists.";
         }
 
         // Hash password
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+        if (!empty($errors)) {
+
+    $_SESSION['errors'] = $errors;
+
+    $_SESSION['old'] = [
+        'full_name' => $fullName,
+        'username'  => $username,
+        'email'     => $email,
+        'phone'     => $phone
+    ];
+
+    header("Location: register.php");
+    exit;
+        }
 
         // Insert user
         $insert = $this->pdo->prepare("
