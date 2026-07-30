@@ -220,3 +220,4 @@ if (empty($password)) {
     header("Location: dashboard.php");
     exit;
 }
+}
