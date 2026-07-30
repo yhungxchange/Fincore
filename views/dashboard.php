@@ -1,191 +1,126 @@
-
-$config = require __DIR__ . '/../config/database.php';
-require __DIR__ . '/../app/Database.php';
-
-$db = new Database($config);
-$pdo = $db->connection();
-
-$stmt = $pdo->prepare("
-    SELECT balance
-    FROM wallets
-    WHERE user_id = :user_id
-    LIMIT 1
-");
-
-$stmt->execute([
-    'user_id' => $_SESSION['user_id']
-]);
-
-$wallet = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$balance = $wallet ? $wallet['balance'] : 0;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinCore Dashboard</title>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FinCore Dashboard</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f5f7fb;
-padding:20px;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-}
-
-.header{
-background:#0d6efd;
-color:white;
-padding:20px;
-border-radius:15px;
-margin-bottom:20px;
-}
-
-.header h2{
-font-size:28px;
-}
-
-.wallet{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-margin-bottom:20px;
-}
-
-.wallet p{
-color:gray;
-font-size:18px;
-}
-
-.wallet h1{
-margin-top:10px;
-font-size:40px;
-color:#0d6efd;
-}
-
-.actions{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:15px;
-}
-
-.actions button{
-padding:18px;
-border:none;
-border-radius:10px;
-background:#0d6efd;
-color:white;
-font-size:16px;
-cursor:pointer;
-transition:.3s;
-}
-
-.actions button:hover{
-background:#0b5ed7;
-}
-
-.logout{
-margin-top:20px;
-}
-
-.logout button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:10px;
-background:#dc3545;
-color:white;
-font-size:17px;
-cursor:pointer;
-}
-
-.logout button:hover{
-background:#bb2d3b;
-}
-
-@media(max-width:600px){
-
-.header h2{
-font-size:22px;
-}
-
-.wallet h1{
-font-size:32px;
-}
-
-}
-
-</style>
-
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="sidebar">
 
-<div class="header">
+    <div class="logo">
+        <h2>FinCore</h2>
+    </div>
 
-<h2>
-Welcome back,
-<?= htmlspecialchars($_SESSION['username']) ?>
-👋
-</h2>
+    <ul>
 
-</div>
+        <li><a href="#">🏠 Dashboard</a></li>
 
-<div class="wallet">
+        <li><a href="#">💰 Deposit</a></li>
 
-<p>Wallet Balance</p>
+        <li><a href="#">💸 Transfer</a></li>
 
-<h1>
-₦<?= number_format($balance,2) ?>
-</h1>
+        <li><a href="#">📜 Transactions</a></li>
 
-</div>
+        <li><a href="#">📱 Airtime</a></li>
 
-<div class="actions">
+        <li><a href="#">🌐 Data</a></li>
 
-<button>💰 Deposit</button>
+        <li><a href="#">📺 Cable TV</a></li>
 
-<button>💸 Transfer</button>
+        <li><a href="#">⚡ Electricity</a></li>
 
-<button>📱 Buy Data</button>
+        <li><a href="#">👤 Profile</a></li>
 
-<button>📞 Airtime</button>
+        <li><a href="logout.php">🚪 Logout</a></li>
 
-<button>📜 Transactions</button>
-
-<button>👤 Profile</button>
+    </ul>
 
 </div>
 
-<div class="logout">
 
-<button onclick="window.location.href='logout.php'">
-🚪 Logout
-</button>
+<div class="main-content">
+
+    <div class="topbar">
+
+        <div class="menu-btn">
+            ☰
+        </div>
+
+        <div class="welcome">
+
+            <h2>
+                Welcome back,
+                <?= htmlspecialchars($_SESSION['username']) ?>
+                👋
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="wallet-card">
+
+        <h3>Wallet Balance</h3>
+
+        <h1>
+            ₦<?= number_format($balance,2) ?>
+        </h1>
+
+    </div>
+
+
+    <div class="quick-actions">
+
+        <div class="action-card">
+            💰
+            <p>Deposit</p>
+        </div>
+
+        <div class="action-card">
+            💸
+            <p>Transfer</p>
+        </div>
+
+        <div class="action-card">
+            📱
+            <p>Airtime</p>
+        </div>
+
+        <div class="action-card">
+            🌐
+            <p>Data</p>
+        </div>
+
+        <div class="action-card">
+            📺
+            <p>Cable</p>
+        </div>
+
+        <div class="action-card">
+            ⚡
+            <p>Electricity</p>
+        </div>
+
+    </div>
+
+
+    <div class="transactions">
+
+        <h3>Recent Transactions</h3>
+
+        <p>No transactions available.</p>
+
+    </div>
 
 </div>
 
-</div>
+<script src="../assets/js/dashboard.js"></script>
 
 </body>
 </html>
