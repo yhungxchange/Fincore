@@ -10,113 +10,136 @@
 
 <body>
 
-<div class="sidebar">
+<div class="container">
 
-    <div class="logo">
-        <h2>FinCore</h2>
-    </div>
+    <!-- Sidebar -->
 
-    <ul>
+    <aside class="sidebar">
 
-        <li><a href="#">🏠 Dashboard</a></li>
-
-        <li><a href="#">💰 Deposit</a></li>
-
-        <li><a href="#">💸 Transfer</a></li>
-
-        <li><a href="#">📜 Transactions</a></li>
-
-        <li><a href="#">📱 Airtime</a></li>
-
-        <li><a href="#">🌐 Data</a></li>
-
-        <li><a href="#">📺 Cable TV</a></li>
-
-        <li><a href="#">⚡ Electricity</a></li>
-
-        <li><a href="#">👤 Profile</a></li>
-
-        <li><a href="logout.php">🚪 Logout</a></li>
-
-    </ul>
-
-</div>
-
-
-<div class="main-content">
-
-    <div class="topbar">
-
-        <div class="menu-btn">
-            ☰
+        <div class="logo">
+            FinCore
         </div>
 
-        <div class="welcome">
+        <ul>
+
+            <li><a href="#" class="active">🏠 Dashboard</a></li>
+
+            <li><a href="#">👛 Wallet</a></li>
+
+            <li><a href="#">💰 Deposit</a></li>
+
+            <li><a href="#">💸 Transfer</a></li>
+
+            <li><a href="#">📱 Airtime & Data</a></li>
+
+            <li><a href="#">📺 Bills Payment</a></li>
+
+            <li><a href="#">📜 Transactions</a></li>
+
+            <li><a href="#">💳 Cards</a></li>
+
+            <li><a href="#">👤 Beneficiaries</a></li>
+
+            <li><a href="#">⚙ Settings</a></li>
+
+            <li><a href="#">🛟 Support</a></li>
+
+            <li style="margin-top:30px;">
+                <a href="logout.php">🚪 Logout</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <!-- Top -->
+
+        <div class="topbar">
 
             <h2>
                 Welcome back,
-                <?= htmlspecialchars($_SESSION['username']) ?>
-                👋
+                <?= htmlspecialchars($_SESSION['username']); ?> 👋
             </h2>
 
         </div>
 
-    </div>
+        <!-- Cards -->
 
+        <div class="grid">
 
-    <div class="wallet-card">
+            <div class="card wallet">
 
-        <h3>Wallet Balance</h3>
+                <small>Wallet Balance</small>
 
-        <h1>
-            ₦<?= number_format($balance,2) ?>
-        </h1>
+                <h2>
+                    ₦<?= number_format($balance,2); ?>
+                </h2>
 
-    </div>
+                <p>Available Balance</p>
 
+            </div>
 
-    <div class="quick-actions">
+            <div class="card">
 
-        <div class="action-card">
-            💰
-            <p>Deposit</p>
+                <h3>Total Deposit</h3>
+
+                <h2>₦0.00</h2>
+
+                <small>This Month</small>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Total Spent</h3>
+
+                <h2>₦0.00</h2>
+
+                <small>This Month</small>
+
+            </div>
+
         </div>
 
-        <div class="action-card">
-            💸
-            <p>Transfer</p>
+        <!-- Quick Actions -->
+
+        <h2 style="margin-top:35px;">
+            Quick Actions
+        </h2>
+
+        <div class="actions">
+
+            <div class="action-card">📱<br>Airtime</div>
+
+            <div class="action-card">🌐<br>Data</div>
+
+            <div class="action-card">📺<br>Cable</div>
+
+            <div class="action-card">⚡<br>Electricity</div>
+
+            <div class="action-card">💸<br>Transfer</div>
+
+            <div class="action-card">➕<br>More</div>
+
         </div>
 
-        <div class="action-card">
-            📱
-            <p>Airtime</p>
+        <!-- Transactions -->
+
+        <h2 style="margin-top:40px;">
+            Recent Transactions
+        </h2>
+
+        <div class="card" style="margin-top:15px;">
+
+            <p>No transactions yet.</p>
+
         </div>
 
-        <div class="action-card">
-            🌐
-            <p>Data</p>
-        </div>
-
-        <div class="action-card">
-            📺
-            <p>Cable</p>
-        </div>
-
-        <div class="action-card">
-            ⚡
-            <p>Electricity</p>
-        </div>
-
-    </div>
-
-
-    <div class="transactions">
-
-        <h3>Recent Transactions</h3>
-
-        <p>No transactions available.</p>
-
-    </div>
+    </main>
 
 </div>
 
