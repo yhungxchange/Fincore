@@ -121,37 +121,65 @@
 
         <header class="topbar">
 
-            <button class="menu-btn" id="menuBtn">
-                ☰
-            </button>
+<div class="left-top">
 
-            <div class="welcome">
+<button class="menu-btn" id="menuBtn">
+<i class="fa-solid fa-bars"></i>
+</button>
 
-                <h2>
-                    Welcome,
-                    <?= htmlspecialchars($_SESSION['username']); ?>
-                </h2>
+<div class="welcome">
 
-                <span>
-                    FinCore Digital Banking
-                </span>
+<h2>Welcome back, <?= htmlspecialchars($_SESSION['username']); ?></h2>
 
-            </div>
+<p>Manage your finances with FinCore</p>
 
-            <div class="profile">
+</div>
 
-                🔔
+</div>
 
-                <div class="avatar">
+<div class="right-top">
 
-                    <?= strtoupper(substr($_SESSION['username'],0,1)); ?>
+<div class="search-box">
 
-                </div>
+<i class="fa-solid fa-search"></i>
 
-            </div>
+<input
+type="text"
+placeholder="Search..."
+>
+
+</div>
+
+<div class="notification">
+
+<i class="fa-regular fa-bell"></i>
+
+<span class="notify-dot"></span>
+
+</div>
+
+<div class="profile-box">
+
+<div class="avatar">
+
+<?= strtoupper(substr($_SESSION['username'],0,1)); ?>
+
+</div>
+
+<div>
+
+<h4><?= htmlspecialchars($_SESSION['username']); ?></h4>
+
+<small>Verified User</small>
+
+</div>
+
+</div>
+
+</div>
 
         </header>
-
+        
         <!-- Wallet section starts here -->
 
         <section id="wallet-section">
