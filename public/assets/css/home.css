@@ -1,13 +1,344 @@
-/* ===== FEATURES ===== */
+/* =========================
+   FINCORE HOME CSS - PART 1
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:linear-gradient(135deg,#3F37C9,#4361EE,#4895EF);
+
+color:#fff;
+
+overflow-x:hidden;
+
+}
+
+/* NAVBAR */
+
+.navbar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:18px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo-area{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:26px;
+
+font-weight:bold;
+
+}
+
+.logo{
+
+width:55px;
+
+}
+
+.nav-links{
+
+display:flex;
+
+list-style:none;
+
+align-items:center;
+
+gap:35px;
+
+}
+
+.nav-links a{
+
+text-decoration:none;
+
+color:#fff;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+color:#FFD54F;
+
+}
+
+.register-btn{
+
+background:#fff;
+
+color:#3F37C9 !important;
+
+padding:12px 22px;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+padding:130px 8% 80px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:70px;
+
+}
+
+.hero-left{
+
+flex:1;
+
+}
+
+.hero-left h1{
+
+font-size:65px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+}
+
+.hero-left p{
+
+font-size:20px;
+
+line-height:1.9;
+
+opacity:.92;
+
+max-width:620px;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+background:#fff;
+
+color:#3F37C9;
+
+padding:16px 35px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+}
+
+.secondary-btn{
+
+border:2px solid #fff;
+
+padding:16px 35px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+color:#fff;
+
+font-weight:bold;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:#fff;
+
+color:#3F37C9;
+
+}
+
+/* HERO RIGHT */
+
+.hero-right{
+
+flex:1;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+}
+
+.floating-card{
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+padding:30px;
+
+border-radius:25px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,.18);
+
+transition:.35s;
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+.floating-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card2{
+
+animation-delay:1s;
+
+}
+
+.card3{
+
+animation-delay:2s;
+
+}
+
+.card4{
+
+animation-delay:3s;
+
+}
+
+.floating-card i{
+
+font-size:50px;
+
+margin-bottom:20px;
+
+color:#FFD54F;
+
+}
+
+.floating-card h3{
+
+margin-bottom:10px;
+
+font-size:24px;
+
+}
+
+.floating-card p{
+
+opacity:.9;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* =========================
+   FINCORE HOME CSS - PART 2
+========================= */
+
+/* FEATURES */
 
 .features,
 .services,
 .stats-section,
 .cta-section{
 
-padding:90px 20px;
-
-text-align:center;
+padding:90px 8%;
 
 }
 
@@ -15,25 +346,27 @@ text-align:center;
 .services h2,
 .cta-section h2{
 
+text-align:center;
+
 font-size:42px;
 
 margin-bottom:15px;
-
-color:#fff;
 
 }
 
 .section-text{
 
-max-width:700px;
+text-align:center;
+
+max-width:750px;
 
 margin:0 auto 60px;
 
-color:rgba(255,255,255,.85);
+line-height:1.8;
+
+opacity:.9;
 
 font-size:18px;
-
-line-height:1.8;
 
 }
 
@@ -42,13 +375,9 @@ line-height:1.8;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 
 gap:30px;
-
-max-width:1200px;
-
-margin:auto;
 
 }
 
@@ -57,15 +386,17 @@ margin:auto;
 
 background:rgba(255,255,255,.10);
 
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.12);
+backdrop-filter:blur(18px);
 
 padding:35px;
 
 border-radius:22px;
 
+text-align:center;
+
 transition:.35s;
+
+border:1px solid rgba(255,255,255,.12);
 
 }
 
@@ -81,32 +412,32 @@ background:rgba(255,255,255,.18);
 .feature-card i,
 .service-card i{
 
-font-size:45px;
-
-margin-bottom:20px;
+font-size:48px;
 
 color:#FFD54F;
+
+margin-bottom:18px;
 
 }
 
 .feature-card h3,
 .service-card h3{
 
-margin-bottom:12px;
+margin-bottom:15px;
 
-color:#fff;
+font-size:23px;
 
 }
 
 .feature-card p{
 
-color:#ddd;
+line-height:1.8;
 
-line-height:1.7;
+opacity:.9;
 
 }
 
-/* ===== STATS ===== */
+/* STATS */
 
 .stats-section{
 
@@ -116,10 +447,6 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
 gap:25px;
 
-max-width:1100px;
-
-margin:auto;
-
 }
 
 .stat-card{
@@ -128,11 +455,13 @@ background:#fff;
 
 padding:35px;
 
-border-radius:22px;
+border-radius:20px;
 
-box-shadow:0 15px 40px rgba(0,0,0,.15);
+text-align:center;
 
-color:#4F46E5;
+color:#3F37C9;
+
+box-shadow:0 15px 45px rgba(0,0,0,.18);
 
 }
 
@@ -144,53 +473,59 @@ margin-bottom:10px;
 
 }
 
-/* ===== CTA ===== */
+/* CTA */
 
 .cta-section{
 
-max-width:900px;
-
-margin:auto;
+text-align:center;
 
 }
 
 .cta-section p{
 
-color:#eee;
-
-font-size:18px;
-
-line-height:1.8;
+max-width:700px;
 
 margin:25px auto 45px;
 
-max-width:700px;
+line-height:1.9;
+
+font-size:18px;
+
+opacity:.95;
 
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 
 .footer{
 
-padding:60px 20px;
+margin-top:70px;
+
+padding:60px 8%;
 
 background:rgba(0,0,0,.18);
 
 text-align:center;
 
-margin-top:80px;
+}
+
+.footer-logo{
+
+margin-bottom:30px;
 
 }
 
 .footer-logo img{
 
-width:80px;
+width:70px;
 
-margin-bottom:12px;
+margin-bottom:15px;
 
 }
 
 .footer-logo h2{
+
+font-size:34px;
 
 margin-bottom:8px;
 
@@ -202,21 +537,23 @@ display:flex;
 
 justify-content:center;
 
-gap:30px;
+gap:35px;
 
 flex-wrap:wrap;
 
-margin:35px 0;
+margin-bottom:30px;
 
 }
 
 .footer-links a{
 
-color:#fff;
-
 text-decoration:none;
 
+color:#fff;
+
 font-weight:600;
+
+transition:.3s;
 
 }
 
@@ -234,7 +571,7 @@ font-size:14px;
 
 }
 
-/* ===== FLOATING BACKGROUND ===== */
+/* BACKGROUND CIRCLES */
 
 .circle{
 
@@ -244,17 +581,17 @@ border-radius:50%;
 
 background:rgba(255,255,255,.08);
 
-animation:float 8s infinite ease-in-out;
-
 z-index:-1;
+
+animation:float 8s infinite ease-in-out;
 
 }
 
 .circle1{
 
-width:250px;
+width:260px;
 
-height:250px;
+height:260px;
 
 top:-70px;
 
@@ -268,9 +605,9 @@ width:180px;
 
 height:180px;
 
-bottom:60px;
+right:50px;
 
-right:60px;
+bottom:60px;
 
 animation-delay:2s;
 
@@ -282,12 +619,111 @@ width:120px;
 
 height:120px;
 
-top:45%;
+right:15%;
 
-right:10%;
+top:45%;
 
 animation-delay:4s;
 
-  }
+}
 
-    
+/* MOBILE */
+
+@media(max-width:900px){
+
+.navbar{
+
+padding:18px 25px;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.nav-links{
+
+gap:18px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero{
+
+flex-direction:column;
+
+text-align:center;
+
+padding-top:180px;
+
+}
+
+.hero-left h1{
+
+font-size:46px;
+
+}
+
+.hero-left p{
+
+margin:auto auto 35px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-right{
+
+width:100%;
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-left h1{
+
+font-size:34px;
+
+}
+
+.hero-left p{
+
+font-size:16px;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.features h2,
+.services h2,
+.cta-section h2{
+
+font-size:32px;
+
+}
+
+  }
