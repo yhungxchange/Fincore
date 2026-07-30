@@ -88,9 +88,9 @@ All from one powerful platform.
 
 <div class="hero-buttons">
 
-<a href="/index.php" class="register-btn">
+<a href="/register.php" class="primary-btn">
 
-Create Free Account
+Create Account
 
 </a>
 
