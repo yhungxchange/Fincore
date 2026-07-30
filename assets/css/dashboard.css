@@ -131,4 +131,38 @@ width:100%;
 padding:20px;
 }
 
-  }
+  .menu li a{
+display:flex;
+align-items:center;
+gap:15px;
+font-size:15px;
+}
+
+.menu li i{
+width:22px;
+font-size:18px;
+text-align:center;
+}
+
+.menu li span{
+font-weight:600;
+}
+
+.sidebar{
+border-top-right-radius:25px;
+border-bottom-right-radius:25px;
+}
+
+.logo h2{
+font-size:34px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.logo p{
+font-size:13px;
+margin-top:5px;
+color:#999;
+}
+
+   }
