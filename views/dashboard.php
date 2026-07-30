@@ -139,17 +139,6 @@
 
 <div class="right-top">
 
-<div class="search-box">
-
-<i class="fa-solid fa-search"></i>
-
-<input
-type="text"
-placeholder="Search..."
->
-
-</div>
-
 <div class="notification">
 
 <i class="fa-regular fa-bell"></i>
