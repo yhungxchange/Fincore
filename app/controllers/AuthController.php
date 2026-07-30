@@ -14,10 +14,10 @@ class AuthController
         $fullName = trim($_POST['full_name']);
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
-        $phone = trim($_POST['phone']);
+        $phone = preg_replace('/\D/', '', trim($_POST['phone']));
         $password = $_POST['password'];
 
-        // Validate input
+        // Required fields
         if (
             empty($fullName) ||
             empty($username) ||
@@ -26,6 +26,31 @@ class AuthController
             empty($password)
         ) {
             die("All fields are required.");
+        }
+
+        // Full name validation
+        if (strlen($fullName) < 5) {
+            die("Full name must be at least 5 characters.");
+        }
+
+        // Username validation
+        if (strlen($username) < 5) {
+            die("Username must be at least 5 characters.");
+        }
+
+        // Email validation
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            die("Please enter a valid email address.");
+        }
+
+        // Phone validation
+        if (strlen($phone) < 11 || strlen($phone) > 14) {
+            die("Phone number must contain between 11 and 14 digits.");
+        }
+
+        // Password validation
+        if (strlen($password) < 5) {
+            die("Password must be at least 5 characters.");
         }
 
         // Check if username, email or phone already exists
@@ -50,7 +75,7 @@ class AuthController
         // Hash password
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Insert user and return the new ID
+        // Insert user
         $insert = $this->pdo->prepare("
             INSERT INTO users
             (
@@ -79,10 +104,10 @@ class AuthController
             'password_hash' => $passwordHash
         ]);
 
-        // Get the newly created user ID
+        // Get new user ID
         $userId = $insert->fetchColumn();
 
-        // Automatically create wallet
+        // Create wallet automatically
         $wallet = $this->pdo->prepare("
             INSERT INTO wallets
             (
@@ -112,6 +137,10 @@ class AuthController
 
         if (empty($email) || empty($password)) {
             die("Email and Password are required.");
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            die("Please enter a valid email address.");
         }
 
         $stmt = $this->pdo->prepare("
