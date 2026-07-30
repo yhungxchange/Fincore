@@ -7,7 +7,7 @@
 
 <title>FinCore | Smart. Secure. Seamless.</title>
 
-<link rel="stylesheet" href="assets/css/auth.css">
+<link rel="stylesheet" href="/assets/css/auth.css">
 
 </head>
 
