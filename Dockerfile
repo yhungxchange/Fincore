@@ -6,7 +6,12 @@ RUN apt-get update && apt-get install -y \
 
 COPY . /var/www/html/
 
-WORKDIR /var/www/html/public
+# Change Apache's document root to the public folder
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf \
+    && a2enmod rewrite
 
 EXPOSE 80
 
