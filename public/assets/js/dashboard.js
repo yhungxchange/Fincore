@@ -1,130 +1,101 @@
-// ===============================
-// FINCORE DASHBOARD V3
-// ===============================
-
+// ===========================
 // Sidebar Toggle
+// ===========================
+
 const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 
-if (menuBtn && sidebar) {
+if(menuBtn){
 
-    menuBtn.addEventListener("click", function () {
+menuBtn.addEventListener("click",()=>{
 
-        sidebar.classList.toggle("show");
-
-    });
-
-}
-
-// ===============================
-// Hide / Show Wallet Balance
-// ===============================
-
-const balance = document.getElementById("walletBalance");
-const toggleBalance = document.getElementById("toggleBalance");
-
-if (balance && toggleBalance) {
-
-    const originalBalance = balance.innerHTML;
-
-    let hidden = false;
-
-    toggleBalance.addEventListener("click", function () {
-
-        if (!hidden) {
-
-            balance.innerHTML = "₦********";
-
-            toggleBalance.innerHTML =
-                '<i class="fa-solid fa-eye-slash"></i>';
-
-        } else {
-
-            balance.innerHTML = originalBalance;
-
-            toggleBalance.innerHTML =
-                '<i class="fa-solid fa-eye"></i>';
-
-        }
-
-        hidden = !hidden;
-
-    });
-
-}
-
-// ===============================
-// Dynamic Greeting
-// ===============================
-
-const greeting = document.getElementById("greeting");
-
-if (greeting) {
-
-    const hour = new Date().getHours();
-
-    let text = "Good Evening";
-
-    if (hour >= 5 && hour < 12) {
-
-        text = "Good Morning";
-
-    } else if (hour >= 12 && hour < 17) {
-
-        text = "Good Afternoon";
-
-    }
-
-    const username = greeting.innerHTML.split(",")[1];
-
-    greeting.innerHTML = text + "," + username;
-
-}
-
-// ===============================
-// Active Sidebar Link
-// ===============================
-
-const menuLinks = document.querySelectorAll(".sidebar-menu a");
-
-menuLinks.forEach(link => {
-
-    link.addEventListener("click", function () {
-
-        menuLinks.forEach(item => {
-
-            item.classList.remove("active");
-
-        });
-
-        this.classList.add("active");
-
-    });
+sidebar.classList.toggle("show");
 
 });
 
-// ===============================
+}
+
+// ===========================
+// Balance Toggle
+// ===========================
+
+const balance=document.getElementById("walletBalance");
+const eye=document.getElementById("toggleBalance");
+
+if(balance && eye){
+
+const original=balance.innerHTML;
+
+let hidden=false;
+
+eye.onclick=function(){
+
+if(hidden){
+
+balance.innerHTML=original;
+
+eye.innerHTML='<i class="fa-solid fa-eye"></i>';
+
+}else{
+
+balance.innerHTML="₦********";
+
+eye.innerHTML='<i class="fa-solid fa-eye-slash"></i>';
+
+}
+
+hidden=!hidden;
+
+};
+
+}
+
+// ===========================
+// Greeting
+// ===========================
+
+const welcome=document.querySelector(".welcome h1");
+
+if(welcome){
+
+const hour=new Date().getHours();
+
+let greet="Good Evening";
+
+if(hour<12){
+
+greet="Good Morning";
+
+}else if(hour<17){
+
+greet="Good Afternoon";
+
+}
+
+const name=welcome.innerHTML.split(",")[1];
+
+welcome.innerHTML=greet+","+name;
+
+}
+
+// ===========================
 // Close Sidebar On Mobile
-// ===============================
+// ===========================
 
-document.addEventListener("click", function (e) {
+document.addEventListener("click",function(e){
 
-    if (
+if(window.innerWidth<=992){
 
-        window.innerWidth <= 992 &&
+if(!sidebar.contains(e.target) &&
 
-        sidebar &&
+!menuBtn.contains(e.target) &&
 
-        sidebar.classList.contains("show") &&
+sidebar.classList.contains("show")){
 
-        !sidebar.contains(e.target) &&
+sidebar.classList.remove("show");
 
-        !menuBtn.contains(e.target)
+}
 
-    ) {
-
-        sidebar.classList.remove("show");
-
-    }
+}
 
 });
