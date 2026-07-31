@@ -1,8 +1,9 @@
-// =========================
-// Mobile Sidebar Toggle
-// =========================
+// ===========================
+// FINCORE DASHBOARD V2
+// ===========================
 
-const menuBtn = document.getElementById("menuToggle");
+// Sidebar Toggle
+const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 
 if (menuBtn && sidebar) {
@@ -13,36 +14,51 @@ if (menuBtn && sidebar) {
 
     });
 
+    // Close sidebar when clicking outside (mobile)
+    document.addEventListener("click", (e) => {
+
+        if (
+            window.innerWidth <= 992 &&
+            !sidebar.contains(e.target) &&
+            !menuBtn.contains(e.target)
+        ) {
+            sidebar.classList.remove("show");
+        }
+
+    });
+
 }
 
-// =========================
-// Hide / Show Balance
-// =========================
+// ===========================
+// Hide / Show Wallet Balance
+// ===========================
 
 const balance = document.getElementById("walletBalance");
 const eye = document.getElementById("toggleBalance");
 
 if (balance && eye) {
 
-    const originalBalance = balance.textContent;
+    const realBalance = balance.innerHTML;
 
     let hidden = false;
 
     eye.addEventListener("click", () => {
 
-        if (hidden) {
+        if (!hidden) {
 
-            balance.textContent = originalBalance;
+            balance.innerHTML = "₦********";
 
-            eye.classList.remove("fa-eye-slash");
-            eye.classList.add("fa-eye");
+            eye.classList.remove("fa-eye");
+
+            eye.classList.add("fa-eye-slash");
 
         } else {
 
-            balance.textContent = "********";
+            balance.innerHTML = realBalance;
 
-            eye.classList.remove("fa-eye");
-            eye.classList.add("fa-eye-slash");
+            eye.classList.remove("fa-eye-slash");
+
+            eye.classList.add("fa-eye");
 
         }
 
@@ -52,9 +68,9 @@ if (balance && eye) {
 
 }
 
-// =========================
+// ===========================
 // Dynamic Greeting
-// =========================
+// ===========================
 
 const greeting = document.getElementById("greeting");
 
@@ -62,18 +78,48 @@ if (greeting) {
 
     const hour = new Date().getHours();
 
-    let message = "Good Evening";
+    let text = "Good Evening";
 
     if (hour >= 5 && hour < 12) {
 
-        message = "Good Morning";
+        text = "Good Morning";
 
     } else if (hour >= 12 && hour < 17) {
 
-        message = "Good Afternoon";
+        text = "Good Afternoon";
 
     }
 
-    greeting.innerHTML = `${message}, ${greeting.innerHTML.split(",")[1]}`;
+    const username = greeting.innerText.split(",")[1];
+
+    greeting.innerHTML = `${text}, ${username}`;
 
 }
+
+// ===========================
+// Active Menu Highlight
+// ===========================
+
+const links = document.querySelectorAll(".menu a");
+
+links.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        links.forEach(item => item.classList.remove("active"));
+
+        link.classList.add("active");
+
+    });
+
+});
+
+// ===========================
+// Simple Fade Animation
+// ===========================
+
+window.addEventListener("load", () => {
+
+    document.body.style.opacity = "1";
+
+});
