@@ -1,16 +1,37 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+
+    header("Location: login.php");
+
+    exit;
+
+}
+
+?>
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FinCore Dashboard</title>
+<title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+Dashboard | FinCore
 
-<link rel="stylesheet" href="assets/css/dashboard.css">
+</title>
+
+<link rel="stylesheet" href="/assets/css/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
@@ -18,314 +39,474 @@
 
 <div class="dashboard">
 
-    <!-- Sidebar -->
+<!-- SIDEBAR -->
 
-    <aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar">
 
-        <div class="logo">
+<div class="logo-box">
 
-            <h2>FinCore</h2>
+<img
+src="/assets/images/logo.png"
+class="logo">
 
-            <p>Digital Banking</p>
+<h2>
 
-        </div>
+FinCore
 
-        <ul class="menu">
+</h2>
 
-<li class="active">
-<a href="#">
+</div>
+
+<nav>
+
+<a href="dashboard.php" class="active">
+
 <i class="fa-solid fa-house"></i>
-<span>Dashboard</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Dashboard
+
+</a>
+
+<a href="wallet.php">
+
 <i class="fa-solid fa-wallet"></i>
-<span>Wallet</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Wallet
+
+</a>
+
+<a href="fund-wallet.php">
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+Fund Wallet
+
+</a>
+
+<a href="transfer.php">
+
 <i class="fa-solid fa-money-bill-transfer"></i>
-<span>Transfer</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Transfer
+
+</a>
+
+<a href="airtime.php">
+
 <i class="fa-solid fa-mobile-screen"></i>
-<span>Airtime</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Airtime
+
+</a>
+
+<a href="data.php">
+
 <i class="fa-solid fa-wifi"></i>
-<span>Data</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Data
+
+</a>
+
+<a href="cable.php">
+
 <i class="fa-solid fa-tv"></i>
-<span>Cable TV</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Cable TV
+
+</a>
+
+<a href="electricity.php">
+
 <i class="fa-solid fa-bolt"></i>
-<span>Electricity</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Electricity
+
+</a>
+
+<a href="transactions.php">
+
 <i class="fa-solid fa-clock-rotate-left"></i>
-<span>Transactions</span>
-</a>
-</li>
 
-<li>
-<a href="#">
+Transactions
+
+</a>
+
+<a href="notifications.php">
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</a>
+
+<a href="profile.php">
+
 <i class="fa-solid fa-user"></i>
-<span>Profile</span>
-</a>
-</li>
 
-<li>
-<a href="#">
-<i class="fa-solid fa-gear"></i>
-<span>Settings</span>
-</a>
-</li>
+Profile
 
-<li>
+</a>
+
 <a href="logout.php">
+
 <i class="fa-solid fa-right-from-bracket"></i>
-<span>Logout</span>
+
+Logout
+
 </a>
-</li>
 
-    </ul>
+</nav>
 
-    </aside>
+</aside>
 
-    <!-- Main -->
+<!-- MAIN -->
 
-    <main class="main">
+<div class="main-content">
 
-        <!-- Top Bar -->
+<header class="topbar">
 
-        <header class="topbar">
+<button id="menuToggle" class="menu-btn">
 
-<div class="left-top">
-
-<button class="menu-btn" id="menuBtn">
 <i class="fa-solid fa-bars"></i>
+
 </button>
 
-<div class="welcome">
+<div class="top-text">
 
-<h2>Welcome back, <?= htmlspecialchars($_SESSION['username']); ?></h2>
+<h2>
 
-<p>Manage your finances with FinCore</p>
+Good Morning,
+
+<?= htmlspecialchars($_SESSION['username']) ?>
+
+👋
+
+</h2>
+
+<p>
+
+Welcome back to FinCore. Manage your finances with confidence.
+
+</p>
+
+</div>
+
+</header>
+
+<section class="wallet-banner">
+
+<div class="wallet-info">
+
+<p class="wallet-title">
+
+Available Balance
+
+</p>
+
+<div class="balance-box">
+
+<h1 id="walletBalance">
+
+₦0.00
+
+</h1>
+
+<i
+class="fa-solid fa-eye"
+id="toggleBalance">
+
+</i>
+
+</div>
+
+<div class="wallet-actions">
+
+<a
+href="fund-wallet.php"
+class="primary-btn">
+
+Fund Wallet
+
+</a>
+
+<a
+href="transfer.php"
+class="secondary-btn">
+
+Transfer
+
+</a>
 
 </div>
 
 </div>
 
-<div class="right-top">
+<div class="wallet-icon">
 
-<div class="notification">
-
-<i class="fa-regular fa-bell"></i>
-
-<span class="notify-dot"></span>
-
-</div>
-
-<div class="profile-box">
-
-<div class="avatar">
-
-<?= strtoupper(substr($_SESSION['username'],0,1)); ?>
-
-</div>
-
-<div>
-
-<h4><?= htmlspecialchars($_SESSION['username']); ?></h4>
-
-<small>Verified User</small>
-
-</div>
-
-</div>
-
-</div>
-
-        </header>
-        
-        <!-- Wallet section starts here -->
-
-        <section id="wallet-section">
-
-    <div class="cards">
-
-        <!-- Wallet Card -->
-
-        <div class="wallet-card">
-
-            <div class="wallet-header">
-
-                <div>
-
-                    <p>Available Balance</p>
-
-                    <h1>
-                        ₦<?= number_format($balance,2); ?>
-                    </h1>
-
-                </div>
-
-                <div class="wallet-icon">
-                    💳
-                </div>
-
-            </div>
-
-            <div class="wallet-buttons">
-
-                <button class="deposit-btn">
-
-                    💰 Deposit
-
-                </button>
-
-                <button class="transfer-btn">
-
-                    💸 Transfer
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Statistics -->
-
-        <div class="stats-card">
-
-            <h3>Total Deposit</h3>
-
-            <h2>₦0.00</h2>
-
-            <span>This Month</span>
-
-        </div>
-
-        <div class="stats-card">
-
-            <h3>Total Transfer</h3>
-
-            <h2>₦0.00</h2>
-
-            <span>This Month</span>
-
-        </div>
-
-        <div class="stats-card">
-
-            <h3>Total Transactions</h3>
-
-            <h2>0</h2>
-
-            <span>Completed</span>
-
-        </div>
-
-    </div>
-
-    <!-- Quick Actions -->
-
-    <div class="quick-actions">
-
-        <h2>Quick Actions</h2>
-
-        <div class="actions-grid">
-
-            <div class="action-box">
-                📱
-                <span>Airtime</span>
-            </div>
-
-            <div class="action-box">
-                🌐
-                <span>Data</span>
-            </div>
-
-            <div class="action-box">
-                📺
-                <span>Cable TV</span>
-            </div>
-
-            <div class="action-box">
-                ⚡
-                <span>Electricity</span>
-            </div>
-
-            <div class="action-box">
-                💸
-                <span>Transfer</span>
-            </div>
-
-            <div class="action-box">
-                ➕
-                <span>More</span>
-            </div>
-
-        </div>
-
-        <!-- Recent Transactions -->
-
-<div class="transactions">
-
-    <h2>Recent Transactions</h2>
-
-    <div class="transaction-card">
-
-        <table class="transaction-table">
-
-            <tr>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Status</th>
-            </tr>
-
-            <tr>
-                <td>No Transactions Yet</td>
-                <td>₦0.00</td>
-                <td class="status-pending">
-                    Waiting
-                </td>
-            </tr>
-
-        </table>
-
-    </div>
+<i class="fa-solid fa-wallet"></i>
 
 </div>
 
 </section>
 
-</main>
+<section class="services">
+
+<h3>
+
+Quick Services
+
+</h3>
+
+<div class="service-grid">
+
+<a href="wallet.php" class="service-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<span>Wallet</span>
+
+</a>
+
+<a href="airtime.php" class="service-card">
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+<span>Airtime</span>
+
+</a>
+
+<a href="data.php" class="service-card">
+
+<i class="fa-solid fa-wifi"></i>
+
+<span>Data</span>
+
+</a>
+
+<a href="cable.php" class="service-card">
+
+<i class="fa-solid fa-tv"></i>
+
+<span>Cable TV</span>
+
+</a>
+
+<a href="electricity.php" class="service-card">
+
+<i class="fa-solid fa-bolt"></i>
+
+<span>Electricity</span>
+
+</a>
+
+<a href="transfer.php" class="service-card">
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+<span>Transfer</span>
+
+</a>
+
+<a href="transactions.php" class="service-card">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<span>Transactions</span>
+
+</a>
+
+<a href="profile.php" class="service-card">
+
+<i class="fa-solid fa-user"></i>
+
+<span>Profile</span>
+
+</a>
 
 </div>
 
-<script src="assets/js/dashboard.js"></script>
+    </section>
+
+<section class="analytics">
+
+<h3>
+
+Wallet Analytics
+
+</h3>
+
+<div class="chart-card">
+
+<div class="chart-placeholder">
+
+📈 Monthly Wallet Analytics Chart
+
+<br><br>
+
+<small>
+
+(We'll connect a real chart later.)
+
+</small>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="recent-transactions">
+
+<div class="section-header">
+
+<h3>
+
+Recent Transactions
+
+</h3>
+
+<a href="transactions.php">
+
+View All
+
+</a>
+
+</div>
+
+<div class="transaction-list">
+
+<div class="transaction-item">
+
+<div>
+
+<h4>
+
+Wallet Funding
+
+</h4>
+
+<small>
+
+Today • 10:35 AM
+
+</small>
+
+</div>
+
+<span class="credit">
+
++ ₦0.00
+
+</span>
+
+</div>
+
+<div class="transaction-item">
+
+<div>
+
+<h4>
+
+Transfer
+
+</h4>
+
+<small>
+
+No transfer yet
+
+</small>
+
+</div>
+
+<span class="debit">
+
+₦0.00
+
+</span>
+
+</div>
+
+<div class="transaction-item">
+
+<div>
+
+<h4>
+
+Airtime
+
+</h4>
+
+<small>
+
+No airtime purchase yet
+
+</small>
+
+</div>
+
+<span class="debit">
+
+₦0.00
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+
+const menuBtn = document.getElementById("menuToggle");
+
+const sidebar = document.getElementById("sidebar");
+
+menuBtn.addEventListener("click", () => {
+
+sidebar.classList.toggle("show");
+
+});
+
+const balance = document.getElementById("walletBalance");
+
+const eye = document.getElementById("toggleBalance");
+
+let hidden = false;
+
+const actualBalance = balance.innerText;
+
+eye.addEventListener("click", () => {
+
+if(hidden){
+
+balance.innerText = actualBalance;
+
+eye.classList.remove("fa-eye-slash");
+
+eye.classList.add("fa-eye");
+
+}else{
+
+balance.innerText = "********";
+
+eye.classList.remove("fa-eye");
+
+eye.classList.add("fa-eye-slash");
+
+}
+
+hidden = !hidden;
+
+});
+
+<script src="/assets/js/dashboard.js"></script>
 
 </body>
-        </html>
+
+    </html>
