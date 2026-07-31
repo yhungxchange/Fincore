@@ -1,6 +1,6 @@
-// ===========================
-// FINCORE DASHBOARD V2
-// ===========================
+// ===============================
+// FINCORE DASHBOARD V3
+// ===============================
 
 // Sidebar Toggle
 const menuBtn = document.getElementById("menuBtn");
@@ -8,57 +8,42 @@ const sidebar = document.getElementById("sidebar");
 
 if (menuBtn && sidebar) {
 
-    menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click", function () {
 
         sidebar.classList.toggle("show");
 
     });
 
-    // Close sidebar when clicking outside (mobile)
-    document.addEventListener("click", (e) => {
-
-        if (
-            window.innerWidth <= 992 &&
-            !sidebar.contains(e.target) &&
-            !menuBtn.contains(e.target)
-        ) {
-            sidebar.classList.remove("show");
-        }
-
-    });
-
 }
 
-// ===========================
+// ===============================
 // Hide / Show Wallet Balance
-// ===========================
+// ===============================
 
 const balance = document.getElementById("walletBalance");
-const eye = document.getElementById("toggleBalance");
+const toggleBalance = document.getElementById("toggleBalance");
 
-if (balance && eye) {
+if (balance && toggleBalance) {
 
-    const realBalance = balance.innerHTML;
+    const originalBalance = balance.innerHTML;
 
     let hidden = false;
 
-    eye.addEventListener("click", () => {
+    toggleBalance.addEventListener("click", function () {
 
         if (!hidden) {
 
             balance.innerHTML = "₦********";
 
-            eye.classList.remove("fa-eye");
-
-            eye.classList.add("fa-eye-slash");
+            toggleBalance.innerHTML =
+                '<i class="fa-solid fa-eye-slash"></i>';
 
         } else {
 
-            balance.innerHTML = realBalance;
+            balance.innerHTML = originalBalance;
 
-            eye.classList.remove("fa-eye-slash");
-
-            eye.classList.add("fa-eye");
+            toggleBalance.innerHTML =
+                '<i class="fa-solid fa-eye"></i>';
 
         }
 
@@ -68,9 +53,9 @@ if (balance && eye) {
 
 }
 
-// ===========================
+// ===============================
 // Dynamic Greeting
-// ===========================
+// ===============================
 
 const greeting = document.getElementById("greeting");
 
@@ -90,36 +75,56 @@ if (greeting) {
 
     }
 
-    const username = greeting.innerText.split(",")[1];
+    const username = greeting.innerHTML.split(",")[1];
 
-    greeting.innerHTML = `${text}, ${username}`;
+    greeting.innerHTML = text + "," + username;
 
 }
 
-// ===========================
-// Active Menu Highlight
-// ===========================
+// ===============================
+// Active Sidebar Link
+// ===============================
 
-const links = document.querySelectorAll(".menu a");
+const menuLinks = document.querySelectorAll(".sidebar-menu a");
 
-links.forEach(link => {
+menuLinks.forEach(link => {
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click", function () {
 
-        links.forEach(item => item.classList.remove("active"));
+        menuLinks.forEach(item => {
 
-        link.classList.add("active");
+            item.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
 
     });
 
 });
 
-// ===========================
-// Simple Fade Animation
-// ===========================
+// ===============================
+// Close Sidebar On Mobile
+// ===============================
 
-window.addEventListener("load", () => {
+document.addEventListener("click", function (e) {
 
-    document.body.style.opacity = "1";
+    if (
+
+        window.innerWidth <= 992 &&
+
+        sidebar &&
+
+        sidebar.classList.contains("show") &&
+
+        !sidebar.contains(e.target) &&
+
+        !menuBtn.contains(e.target)
+
+    ) {
+
+        sidebar.classList.remove("show");
+
+    }
 
 });
