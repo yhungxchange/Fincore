@@ -51,30 +51,30 @@ hidden=!hidden;
 }
 
 // ===========================
-// Greeting
+// Greeting (Dashboard Only)
 // ===========================
 
-const welcome=document.querySelector(".welcome h1");
+const welcome = document.querySelector(".welcome h1");
 
-if(welcome){
+if (welcome) {
 
-const hour=new Date().getHours();
+    if (welcome.innerHTML.includes(",")) {
 
-let greet="Good Evening";
+        const hour = new Date().getHours();
 
-if(hour<12){
+        let greet = "Good Evening";
 
-greet="Good Morning";
+        if (hour < 12) {
+            greet = "Good Morning";
+        } else if (hour < 17) {
+            greet = "Good Afternoon";
+        }
 
-}else if(hour<17){
+        const name = welcome.innerHTML.split(",")[1].trim();
 
-greet="Good Afternoon";
+        welcome.innerHTML = greet + ", " + name;
 
-}
-
-const name=welcome.innerHTML.split(",")[1];
-
-welcome.innerHTML=greet+","+name;
+    }
 
 }
 
