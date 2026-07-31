@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <title>FinCore Wallet</title>
 
+<link rel="stylesheet" href="/assets/css/dashboard.css">
 <link rel="stylesheet" href="/assets/css/wallet.css">
 
 <link rel="stylesheet"
