@@ -220,70 +220,48 @@ Manage your finances with confidence.
 
 </header>
 
-<section class="wallet-card">
+<section class="wallet-banner">
 
-<div class="wallet-left">
+    <div class="wallet-left">
 
-<span class="wallet-label">
+        <p class="wallet-title">
+            Available Balance
+        </p>
 
-Available Balance
+        <div class="wallet-balance-row">
 
-</span>
+            <h1 id="walletBalance">
+                ₦<?= number_format($balance,2) ?>
+            </h1>
 
-<div class="wallet-balance">
+            <span id="toggleBalance" class="balance-eye">
+                <i class="fa-solid fa-eye"></i>
+            </span>
 
-<h1 id="walletBalance">
+        </div>
 
-₦<?= number_format($balance,2) ?>
+        <div class="wallet-buttons">
 
-</h1>
+            <a href="fund-wallet.php" class="fund-btn">
+                <i class="fa-solid fa-plus"></i>
+                Fund Wallet
+            </a>
 
-<button
-id="toggleBalance"
-class="eye-btn">
+            <a href="transfer.php" class="transfer-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+                Transfer
+            </a>
 
-<i class="fa-solid fa-eye"></i>
+        </div>
 
-</button>
+    </div>
 
-</div>
+    <div class="wallet-right">
 
-<div class="wallet-actions">
+        <i class="fa-solid fa-wallet wallet-big-icon"></i>
 
-<a
-href="fund-wallet.php"
-class="btn primary">
-
-<i class="fa-solid fa-plus"></i>
-
-Fund Wallet
-
-</a>
-
-<a
-href="transfer.php"
-class="btn secondary">
-
-<i class="fa-solid fa-paper-plane"></i>
-
-Transfer
-
-</a>
-
-</div>
-
-</div>
-
-<div class="wallet-right">
-
-<div class="wallet-icon">
-
-<i class="fa-solid fa-wallet"></i>
-
-</div>
-
-</div>
-
+    </div>
+    
 </section>
 
 <section class="quick-services">
