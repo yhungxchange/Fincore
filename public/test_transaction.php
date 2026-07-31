@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+exit;
+
 $config = require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../app/Database.php';
 
