@@ -6,29 +6,19 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
+<title>FinCore Dashboard</title>
 
-FinCore Dashboard
+<link rel="stylesheet" href="/assets/css/dashboard.css">
 
-</title>
-
-<link
-rel="stylesheet"
-href="/assets/css/dashboard.css">
-
-<link
-rel="stylesheet"
+<link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
@@ -39,135 +29,173 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <!-- SIDEBAR -->
 
-<div
-class="sidebar"
-id="sidebar">
+<aside class="sidebar" id="sidebar">
 
-<div class="logo-area">
+<div class="logo-box">
 
-<img
-src="/assets/images/logo.png"
-class="logo">
+<img src="/assets/images/logo.png" class="logo">
 
-<h2>
-
-FinCore
-
-</h2>
+<h2>FinCore</h2>
 
 </div>
 
-<div class="menu">
+<ul class="sidebar-menu">
 
-<a
-href="dashboard.php"
-class="active">
+<li>
+
+<a href="dashboard.php" class="active">
 
 <i class="fa-solid fa-house"></i>
 
-Dashboard
+<span>Dashboard</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="wallet.php">
 
 <i class="fa-solid fa-wallet"></i>
 
-Wallet
+<span>Wallet</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="fund-wallet.php">
 
 <i class="fa-solid fa-money-bill-wave"></i>
 
-Fund Wallet
+<span>Fund Wallet</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="transfer.php">
 
 <i class="fa-solid fa-money-bill-transfer"></i>
 
-Transfer
+<span>Transfer</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="airtime.php">
 
-<i class="fa-solid fa-mobile-screen"></i>
+<i class="fa-solid fa-mobile-screen-button"></i>
 
-Airtime
+<span>Airtime</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="data.php">
 
 <i class="fa-solid fa-wifi"></i>
 
-Data
+<span>Data</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="cable.php">
 
 <i class="fa-solid fa-tv"></i>
 
-Cable TV
+<span>Cable TV</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="electricity.php">
 
 <i class="fa-solid fa-bolt"></i>
 
-Electricity
+<span>Electricity</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="transactions.php">
 
 <i class="fa-solid fa-clock-rotate-left"></i>
 
-Transactions
+<span>Transactions</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="notifications.php">
 
 <i class="fa-solid fa-bell"></i>
 
-Notifications
+<span>Notifications</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="profile.php">
 
 <i class="fa-solid fa-user"></i>
 
-Profile
+<span>Profile</span>
 
 </a>
+
+</li>
+
+<li>
 
 <a href="logout.php">
 
 <i class="fa-solid fa-right-from-bracket"></i>
 
-Logout
+<span>Logout</span>
 
 </a>
 
-</div>
+</li>
 
-</div>
+</ul>
 
-<!-- CONTENT -->
+</aside>
 
-<div class="content">
+<!-- MAIN -->
+
+<div class="main">
 
 <header class="topbar">
 
-<button class="menu-btn" id="menuBtn">
+<button id="menuBtn" class="menu-btn">
 
 <i class="fa-solid fa-bars"></i>
 
@@ -196,13 +224,13 @@ Manage your finances with confidence.
 
 <div class="wallet-left">
 
-<p>
+<span class="wallet-label">
 
 Available Balance
 
-</p>
+</span>
 
-<div class="balance">
+<div class="wallet-balance">
 
 <h1 id="walletBalance">
 
@@ -210,19 +238,23 @@ Available Balance
 
 </h1>
 
-<i
-class="fa-solid fa-eye"
-id="toggleBalance">
+<button
+id="toggleBalance"
+class="eye-btn">
 
-</i>
+<i class="fa-solid fa-eye"></i>
+
+</button>
 
 </div>
 
-<div class="wallet-buttons">
+<div class="wallet-actions">
 
 <a
 href="fund-wallet.php"
-class="btn-primary">
+class="btn primary">
+
+<i class="fa-solid fa-plus"></i>
 
 Fund Wallet
 
@@ -230,7 +262,9 @@ Fund Wallet
 
 <a
 href="transfer.php"
-class="btn-secondary">
+class="btn secondary">
+
+<i class="fa-solid fa-paper-plane"></i>
 
 Transfer
 
@@ -242,15 +276,19 @@ Transfer
 
 <div class="wallet-right">
 
+<div class="wallet-icon">
+
 <i class="fa-solid fa-wallet"></i>
+
+</div>
 
 </div>
 
 </section>
 
-<section class="services">
+<section class="quick-services">
 
-<div class="section-title">
+<div class="section-header">
 
 <h3>
 
@@ -266,39 +304,15 @@ Quick Services
 
 <i class="fa-solid fa-wallet"></i>
 
-<span>Wallet</span>
+<p>Wallet</p>
 
 </a>
 
-<a href="airtime.php">
+<a href="fund-wallet.php">
 
-<i class="fa-solid fa-mobile-screen"></i>
+<i class="fa-solid fa-money-bill-wave"></i>
 
-<span>Airtime</span>
-
-</a>
-
-<a href="data.php">
-
-<i class="fa-solid fa-wifi"></i>
-
-<span>Data</span>
-
-</a>
-
-<a href="cable.php">
-
-<i class="fa-solid fa-tv"></i>
-
-<span>Cable TV</span>
-
-</a>
-
-<a href="electricity.php">
-
-<i class="fa-solid fa-bolt"></i>
-
-<span>Electricity</span>
+<p>Fund Wallet</p>
 
 </a>
 
@@ -306,7 +320,39 @@ Quick Services
 
 <i class="fa-solid fa-money-bill-transfer"></i>
 
-<span>Transfer</span>
+<p>Transfer</p>
+
+</a>
+
+<a href="airtime.php">
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
+<p>Airtime</p>
+
+</a>
+
+<a href="data.php">
+
+<i class="fa-solid fa-wifi"></i>
+
+<p>Data</p>
+
+</a>
+
+<a href="cable.php">
+
+<i class="fa-solid fa-tv"></i>
+
+<p>Cable TV</p>
+
+</a>
+
+<a href="electricity.php">
+
+<i class="fa-solid fa-bolt"></i>
+
+<p>Electricity</p>
 
 </a>
 
@@ -314,47 +360,33 @@ Quick Services
 
 <i class="fa-solid fa-clock-rotate-left"></i>
 
-<span>Transactions</span>
-
-</a>
-
-<a href="profile.php">
-
-<i class="fa-solid fa-user"></i>
-
-<span>Profile</span>
+<p>Transactions</p>
 
 </a>
 
 </div>
 
-    </section>
+</section>
 
 <section class="analytics">
 
-<div class="section-title">
+<div class="section-header">
 
-<h3>
+<h3>Wallet Analytics</h3>
 
-Wallet Analytics
-
-</h3>
+<a href="#">Monthly Report</a>
 
 </div>
 
-<div class="chart-card">
+<div class="analytics-card">
 
 <div class="chart-placeholder">
 
-📈 Wallet Activity Chart
+<i class="fa-solid fa-chart-line"></i>
 
-<br><br>
+<h4>Analytics Coming Soon</h4>
 
-<small>
-
-Your wallet statistics will appear here.
-
-</small>
+<p>Your wallet activity chart will appear here.</p>
 
 </div>
 
@@ -364,19 +396,11 @@ Your wallet statistics will appear here.
 
 <section class="recent-transactions">
 
-<div class="section-title">
+<div class="section-header">
 
-<h3>
+<h3>Recent Transactions</h3>
 
-Recent Transactions
-
-</h3>
-
-<a href="transactions.php">
-
-View All
-
-</a>
+<a href="transactions.php">View All</a>
 
 </div>
 
@@ -384,79 +408,73 @@ View All
 
 <div class="transaction-item">
 
-<div>
+<div class="transaction-info">
 
-<h4>
+<div class="transaction-icon success">
 
-Wallet Funding
-
-</h4>
-
-<small>
-
-No transaction yet
-
-</small>
+<i class="fa-solid fa-money-bill-wave"></i>
 
 </div>
 
-<span class="credit">
+<div>
 
-+ ₦0.00
+<h4>Wallet Funding</h4>
 
-</span>
+<small>No transaction yet</small>
+
+</div>
+
+</div>
+
+<span class="credit">+ ₦0.00</span>
 
 </div>
 
 <div class="transaction-item">
 
-<div>
+<div class="transaction-info">
 
-<h4>
+<div class="transaction-icon danger">
 
-Transfer
-
-</h4>
-
-<small>
-
-No transaction yet
-
-</small>
+<i class="fa-solid fa-paper-plane"></i>
 
 </div>
 
-<span class="debit">
+<div>
 
-₦0.00
+<h4>Transfer</h4>
 
-</span>
+<small>No transaction yet</small>
+
+</div>
+
+</div>
+
+<span class="debit">₦0.00</span>
 
 </div>
 
 <div class="transaction-item">
 
-<div>
+<div class="transaction-info">
 
-<h4>
+<div class="transaction-icon primary">
 
-Airtime Purchase
-
-</h4>
-
-<small>
-
-No transaction yet
-
-</small>
+<i class="fa-solid fa-mobile-screen-button"></i>
 
 </div>
 
-<span class="debit">
+<div>
 
-₦0.00
+<h4>Airtime Purchase</h4>
 
-</span>
+<small>No transaction yet</small>
+
+</div>
+
+</div>
+
+<span class="debit">₦0.00</span>
 
 </div>
 
