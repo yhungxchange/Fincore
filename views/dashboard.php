@@ -1,13 +1,8 @@
 <?php
-
 if (!isset($_SESSION['user_id'])) {
-
     header("Location: login.php");
-
     exit;
-
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -18,17 +13,22 @@ if (!isset($_SESSION['user_id'])) {
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>
 
-Dashboard | FinCore
+FinCore Dashboard
 
 </title>
 
-<link rel="stylesheet" href="/assets/css/dashboard.css">
+<link
+rel="stylesheet"
+href="/assets/css/dashboard.css">
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
@@ -39,9 +39,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <!-- SIDEBAR -->
 
-<aside class="sidebar" id="sidebar">
+<div
+class="sidebar"
+id="sidebar">
 
-<div class="logo-box">
+<div class="logo-area">
 
 <img
 src="/assets/images/logo.png"
@@ -55,9 +57,11 @@ FinCore
 
 </div>
 
-<nav>
+<div class="menu">
 
-<a href="dashboard.php" class="active">
+<a
+href="dashboard.php"
+class="active">
 
 <i class="fa-solid fa-house"></i>
 
@@ -153,37 +157,34 @@ Logout
 
 </a>
 
-</nav>
+</div>
 
-</aside>
+</div>
 
-<!-- MAIN -->
+<!-- CONTENT -->
 
-<div class="main-content">
+<div class="content">
 
 <header class="topbar">
 
-<button id="menuToggle" class="menu-btn">
+<button class="menu-btn" id="menuBtn">
 
 <i class="fa-solid fa-bars"></i>
 
 </button>
 
-<div class="top-text">
+<div class="welcome">
 
-<h2>
+<h2 id="greeting">
 
 Good Morning,
-
-<?= htmlspecialchars($_SESSION['username']) ?>
-
-👋
+<?= htmlspecialchars($_SESSION['username']) ?> 👋
 
 </h2>
 
 <p>
 
-Welcome back to FinCore. Manage your finances with confidence.
+Manage your finances with confidence.
 
 </p>
 
@@ -191,21 +192,21 @@ Welcome back to FinCore. Manage your finances with confidence.
 
 </header>
 
-<section class="wallet-banner">
+<section class="wallet-card">
 
-<div class="wallet-info">
+<div class="wallet-left">
 
-<p class="wallet-title">
+<p>
 
 Available Balance
 
 </p>
 
-<div class="balance-box">
+<div class="balance">
 
 <h1 id="walletBalance">
 
-₦<?= number_format($balance, 2) ?>
+₦<?= number_format($balance,2) ?>
 
 </h1>
 
@@ -217,11 +218,11 @@ id="toggleBalance">
 
 </div>
 
-<div class="wallet-actions">
+<div class="wallet-buttons">
 
 <a
 href="fund-wallet.php"
-class="primary-btn">
+class="btn-primary">
 
 Fund Wallet
 
@@ -229,7 +230,7 @@ Fund Wallet
 
 <a
 href="transfer.php"
-class="secondary-btn">
+class="btn-secondary">
 
 Transfer
 
@@ -239,7 +240,7 @@ Transfer
 
 </div>
 
-<div class="wallet-icon">
+<div class="wallet-right">
 
 <i class="fa-solid fa-wallet"></i>
 
@@ -249,15 +250,19 @@ Transfer
 
 <section class="services">
 
+<div class="section-title">
+
 <h3>
 
 Quick Services
 
 </h3>
 
+</div>
+
 <div class="service-grid">
 
-<a href="wallet.php" class="service-card">
+<a href="wallet.php">
 
 <i class="fa-solid fa-wallet"></i>
 
@@ -265,7 +270,7 @@ Quick Services
 
 </a>
 
-<a href="airtime.php" class="service-card">
+<a href="airtime.php">
 
 <i class="fa-solid fa-mobile-screen"></i>
 
@@ -273,7 +278,7 @@ Quick Services
 
 </a>
 
-<a href="data.php" class="service-card">
+<a href="data.php">
 
 <i class="fa-solid fa-wifi"></i>
 
@@ -281,7 +286,7 @@ Quick Services
 
 </a>
 
-<a href="cable.php" class="service-card">
+<a href="cable.php">
 
 <i class="fa-solid fa-tv"></i>
 
@@ -289,7 +294,7 @@ Quick Services
 
 </a>
 
-<a href="electricity.php" class="service-card">
+<a href="electricity.php">
 
 <i class="fa-solid fa-bolt"></i>
 
@@ -297,7 +302,7 @@ Quick Services
 
 </a>
 
-<a href="transfer.php" class="service-card">
+<a href="transfer.php">
 
 <i class="fa-solid fa-money-bill-transfer"></i>
 
@@ -305,7 +310,7 @@ Quick Services
 
 </a>
 
-<a href="transactions.php" class="service-card">
+<a href="transactions.php">
 
 <i class="fa-solid fa-clock-rotate-left"></i>
 
@@ -313,7 +318,7 @@ Quick Services
 
 </a>
 
-<a href="profile.php" class="service-card">
+<a href="profile.php">
 
 <i class="fa-solid fa-user"></i>
 
@@ -327,23 +332,27 @@ Quick Services
 
 <section class="analytics">
 
+<div class="section-title">
+
 <h3>
 
 Wallet Analytics
 
 </h3>
 
+</div>
+
 <div class="chart-card">
 
 <div class="chart-placeholder">
 
-📈 Monthly Wallet Analytics Chart
+📈 Wallet Activity Chart
 
 <br><br>
 
 <small>
 
-(We'll connect a real chart later.)
+Your wallet statistics will appear here.
 
 </small>
 
@@ -355,7 +364,7 @@ Wallet Analytics
 
 <section class="recent-transactions">
 
-<div class="section-header">
+<div class="section-title">
 
 <h3>
 
@@ -385,7 +394,7 @@ Wallet Funding
 
 <small>
 
-Today • 10:35 AM
+No transaction yet
 
 </small>
 
@@ -411,7 +420,7 @@ Transfer
 
 <small>
 
-No transfer yet
+No transaction yet
 
 </small>
 
@@ -431,13 +440,13 @@ No transfer yet
 
 <h4>
 
-Airtime
+Airtime Purchase
 
 </h4>
 
 <small>
 
-No airtime purchase yet
+No transaction yet
 
 </small>
 
@@ -459,52 +468,8 @@ No airtime purchase yet
 
 </div>
 
-<script>
-
-const menuBtn = document.getElementById("menuToggle");
-
-const sidebar = document.getElementById("sidebar");
-
-menuBtn.addEventListener("click", () => {
-
-sidebar.classList.toggle("show");
-
-});
-
-const balance = document.getElementById("walletBalance");
-
-const eye = document.getElementById("toggleBalance");
-
-let hidden = false;
-
-const actualBalance = balance.innerText;
-
-eye.addEventListener("click", () => {
-
-if(hidden){
-
-balance.innerText = actualBalance;
-
-eye.classList.remove("fa-eye-slash");
-
-eye.classList.add("fa-eye");
-
-}else{
-
-balance.innerText = "********";
-
-eye.classList.remove("fa-eye");
-
-eye.classList.add("fa-eye-slash");
-
-}
-
-hidden = !hidden;
-
-});
-
 <script src="/assets/js/dashboard.js"></script>
 
 </body>
 
-    </html>
+</html>
