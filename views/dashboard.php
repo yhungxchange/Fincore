@@ -205,7 +205,7 @@ Available Balance
 
 <h1 id="walletBalance">
 
-₦0.00
+₦<?= number_format($balance, 2) ?>
 
 </h1>
 
