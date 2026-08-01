@@ -99,3 +99,26 @@ sidebar.classList.remove("show");
 }
 
 });
+
+// ===========================
+// Quick Amount Buttons
+// ===========================
+
+const amountInput = document.querySelector('input[name="amount"]');
+const quickButtons = document.querySelectorAll('.quick-amount button');
+
+if (amountInput && quickButtons.length > 0) {
+
+    quickButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            let amount = this.innerText.replace(/[₦,]/g, "");
+
+            amountInput.value = amount;
+
+        });
+
+    });
+
+}
