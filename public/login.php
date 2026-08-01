@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION['user_id'])) {
+    header("Location: dashboard.php");
+    exit;
+}
+
 $config = require __DIR__ . '/../config/database.php';
 
 require __DIR__ . '/../app/Database.php';
