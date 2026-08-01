@@ -1,0 +1,90 @@
+.success-section{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.success-card{
+    width:100%;
+    max-width:550px;
+    background:#fff;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.success-icon{
+    font-size:75px;
+    color:#28a745;
+    margin-bottom:20px;
+}
+
+.success-card h2{
+    color:#222;
+    margin-bottom:15px;
+}
+
+.success-amount{
+    font-size:35px;
+    font-weight:700;
+    color:#6C2BD9;
+    margin-bottom:30px;
+}
+
+.success-details{
+    margin-bottom:30px;
+    border:1px solid #eee;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.detail-row{
+    display:flex;
+    justify-content:space-between;
+    padding:18px;
+    border-bottom:1px solid #eee;
+}
+
+.detail-row:last-child{
+    border-bottom:none;
+}
+
+.detail-row span{
+    color:#777;
+}
+
+.success-status{
+    color:#28a745;
+}
+
+.wallet-btn{
+    display:block;
+    text-decoration:none;
+    background:#6C2BD9;
+    color:#fff;
+    padding:16px;
+    border-radius:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.wallet-btn:hover{
+    background:#5521ad;
+}
+
+@media(max-width:768px){
+
+.success-card{
+    padding:25px;
+}
+
+.success-amount{
+    font-size:28px;
+}
+
+.detail-row{
+    padding:15px;
+}
+
+  }
