@@ -7,6 +7,20 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$config = require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../app/Database.php';
+
+$db = new Database($config);
+$pdo = $db->connection();
+
+$userId = $_SESSION['user_id'];
+
+/*
+|--------------------------------------------------------------------------
+| Check Transaction PIN
+|--------------------------------------------------------------------------
+*/
+
 $user = $pdo->prepare("
 SELECT transaction_pin
 FROM users
@@ -28,11 +42,11 @@ if (empty($user['transaction_pin'])) {
 
 }
 
-$config = require __DIR__ . '/../config/database.php';
-require __DIR__ . '/../app/Database.php';
-
-$db = new Database($config);
-$pdo = $db->connection();
+/*
+|--------------------------------------------------------------------------
+| Wallet Balance
+|--------------------------------------------------------------------------
+*/
 
 $stmt = $pdo->prepare("
 SELECT balance
@@ -42,7 +56,7 @@ LIMIT 1
 ");
 
 $stmt->execute([
-    'user_id' => $_SESSION['user_id']
+    'user_id' => $userId
 ]);
 
 $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
