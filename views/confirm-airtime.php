@@ -146,7 +146,7 @@ Logout
 <strong>₦<?= number_format($balance,2) ?></strong>
 </div>
 
-<form action="airtime-pin.php" method="POST">
+<form action="airtime-pin.php" method="GET">
 
 <button
 type="submit"
