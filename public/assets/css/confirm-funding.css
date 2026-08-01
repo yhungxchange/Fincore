@@ -1,0 +1,117 @@
+/* ===========================
+   CONFIRM FUNDING
+=========================== */
+
+.confirm-card{
+    max-width:600px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.confirm-card h2{
+    font-size:26px;
+    font-weight:700;
+    color:#222;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.summary{
+    border:1px solid #eee;
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:30px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 22px;
+    border-bottom:1px solid #eee;
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.row span{
+    color:#777;
+    font-size:15px;
+}
+
+.row strong{
+    color:#222;
+    font-size:17px;
+    font-weight:700;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.cancel-btn,
+.continue-btn{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    padding:15px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cancel-btn{
+    background:#f1f1f1;
+    color:#333;
+}
+
+.cancel-btn:hover{
+    background:#ddd;
+}
+
+.continue-btn{
+    background:#6C2BD9;
+    color:#fff;
+}
+
+.continue-btn:hover{
+    background:#5521ad;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.confirm-card{
+    padding:25px;
+    margin-top:20px;
+}
+
+.confirm-card h2{
+    font-size:22px;
+}
+
+.row{
+    padding:16px;
+}
+
+.row span{
+    font-size:14px;
+}
+
+.row strong{
+    font-size:16px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+}
