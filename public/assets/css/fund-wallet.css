@@ -1,0 +1,97 @@
+/* ===========================
+   FUND WALLET
+=========================== */
+
+.fund-methods{
+    margin-top:25px;
+}
+
+.fund-methods h2{
+    font-size:22px;
+    font-weight:700;
+    color:#222;
+    margin-bottom:20px;
+}
+
+.method-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.method-card{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    cursor:pointer;
+    transition:.3s;
+    border:2px solid transparent;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.method-card:hover{
+    transform:translateY(-6px);
+    border-color:#6C2BD9;
+}
+
+.method-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#f3ebff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.method-icon i{
+    font-size:28px;
+    color:#6C2BD9;
+}
+
+.method-card h3{
+    font-size:22px;
+    color:#222;
+    margin-bottom:10px;
+}
+
+.method-card p{
+    color:#777;
+    font-size:15px;
+    line-height:1.6;
+}
+
+.method-card.disabled{
+    cursor:not-allowed;
+    opacity:.75;
+}
+
+.method-card.disabled:hover{
+    transform:none;
+    border-color:transparent;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.method-grid{
+    grid-template-columns:1fr;
+}
+
+.method-card{
+    padding:22px;
+}
+
+.fund-methods h2{
+    font-size:20px;
+}
+
+.method-card h3{
+    font-size:20px;
+}
+
+  }
