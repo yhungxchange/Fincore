@@ -132,7 +132,7 @@ Logout
 
 <?php endif; ?>
 
-<form method="GET">
+<form method="POST">
 
 <label>Transaction PIN</label>
 
