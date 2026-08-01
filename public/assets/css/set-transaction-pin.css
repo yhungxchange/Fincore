@@ -1,0 +1,102 @@
+/* ===========================
+   TRANSACTION PIN
+=========================== */
+
+.pin-section{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.pin-card{
+    width:100%;
+    max-width:500px;
+    background:#fff;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.pin-card h2{
+    text-align:center;
+    color:#222;
+    margin-bottom:30px;
+    font-size:26px;
+    font-weight:700;
+}
+
+.pin-card label{
+    display:block;
+    margin-bottom:10px;
+    margin-top:18px;
+    color:#444;
+    font-weight:600;
+}
+
+.pin-card input{
+    width:100%;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+    font-size:20px;
+    text-align:center;
+    letter-spacing:8px;
+    transition:.3s;
+}
+
+.pin-card input:focus{
+    border-color:#6C2BD9;
+}
+
+.save-btn{
+    width:100%;
+    margin-top:30px;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#6C2BD9;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    background:#5521ad;
+}
+
+.alert{
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:20px;
+    text-align:center;
+    font-weight:600;
+}
+
+.alert.error{
+    background:#ffe5e5;
+    color:#d11a2a;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.pin-card{
+    padding:25px;
+}
+
+.pin-card h2{
+    font-size:22px;
+}
+
+.pin-card input{
+    font-size:18px;
+    letter-spacing:6px;
+}
+
+  }
