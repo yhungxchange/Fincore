@@ -7,6 +7,27 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$user = $pdo->prepare("
+SELECT transaction_pin
+FROM users
+WHERE id = :id
+LIMIT 1
+");
+
+$user->execute([
+    'id' => $userId
+]);
+
+$user = $user->fetch(PDO::FETCH_ASSOC);
+
+if (empty($user['transaction_pin'])) {
+
+    header("Location: set-transaction-pin.php");
+
+    exit;
+
+}
+
 $config = require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../app/Database.php';
 
