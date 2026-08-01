@@ -115,7 +115,7 @@ Available Balance
 ₦<?= number_format($balance,2) ?>
 </h1>
 
-<form action="#" method="POST">
+<form action="confirm-funding.php" method="POST">
 
 <label>Enter Amount</label>
 
