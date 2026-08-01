@@ -43,12 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if (strlen($newPassword) < 5) {
+    if (
+    strlen($newPassword) < 5 ||
+    !preg_match('/[A-Z]/', $newPassword) ||
+    !preg_match('/[a-z]/', $newPassword) ||
+    !preg_match('/[0-9]/', $newPassword)
+) {
 
-        $_SESSION['error'] = "New password must be at least 5 characters.";
+    $_SESSION['error'] = "Password must be at least 5 characters and contain an uppercase letter, lowercase letter and a number.";
 
-        header("Location: change-password.php");
-        exit;
+    header("Location: change-password.php");
+    exit;
+    
     }
 
     if ($newPassword !== $confirmPassword) {
