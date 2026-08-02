@@ -200,8 +200,6 @@ Continue
 <script src="/assets/js/dashboard.js"></script>
 
 <script>
-    
-alert("JavaScript Loaded");
 
 const verifyBtn = document.querySelector(".verify-btn");
 
@@ -227,29 +225,17 @@ result.innerHTML="Please enter recipient username or email.";
 recipientId.value="";
 
 return;
+fetch("verify-recipient.php",{
 
-}
+method:"POST",
 
-fetch("verify-recipient.php", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: "recipient=" + encodeURIComponent(recipient)
-})
-.then(response => response.text())
-.then(data => {
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
 
-    console.log(data);
-    alert(data);
+body:"recipient="+encodeURIComponent(recipient)
 
 })
-.catch(error => {
-
-    console.log(error);
-    alert(error);
-
-});
 
 .then(response=>response.json())
 
@@ -258,7 +244,6 @@ fetch("verify-recipient.php", {
 if(data.success){
 
 result.className="success";
-
 result.style.display="block";
 
 result.innerHTML=
@@ -270,7 +255,6 @@ recipientId.value=data.id;
 }else{
 
 result.className="error";
-
 result.style.display="block";
 
 result.innerHTML=
@@ -283,17 +267,15 @@ recipientId.value="";
 
 })
 
-.catch(()=>{
+.catch(error=>{
+
+console.log(error);
 
 result.className="error";
-
 result.style.display="block";
-
 result.innerHTML="Network Error. Try again.";
 
 recipientId.value="";
-
-});
 
 });
 
