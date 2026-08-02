@@ -103,7 +103,7 @@ try {
 
         'user_id' => $userId,
 
-        'type' => 'Electricity',
+        'type' => 'electricity',
 
         'description' => "$disco $meterType ($meterNumber)",
 
