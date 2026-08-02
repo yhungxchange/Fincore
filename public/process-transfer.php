@@ -333,14 +333,12 @@ exit;
 |--------------------------------------------------------------------------
 */
 
-if ($pdo->inTransaction()) {
-    $pdo->rollBack();
-}
+catch (Exception $e) {
 
-$_SESSION['error'] = "Transfer failed. Please try again.";
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
 
-header("Location: transfer.php");
-
-exit;
+    die($e->getMessage());
 
 }
