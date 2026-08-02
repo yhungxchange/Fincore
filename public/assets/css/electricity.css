@@ -1,0 +1,151 @@
+.electricity-section{
+display:flex;
+justify-content:center;
+margin-top:30px;
+padding:20px;
+}
+
+.electricity-card{
+width:100%;
+max-width:550px;
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.electricity-card h2{
+text-align:center;
+margin-bottom:20px;
+color:#333;
+}
+
+.wallet-balance{
+background:#6C2BD9;
+color:#fff;
+padding:20px;
+border-radius:15px;
+text-align:center;
+margin-bottom:25px;
+}
+
+.wallet-balance p{
+margin:0;
+font-size:14px;
+opacity:.9;
+}
+
+.wallet-balance h3{
+margin-top:10px;
+font-size:28px;
+font-weight:700;
+}
+
+.electricity-card label{
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-weight:600;
+color:#444;
+}
+
+.electricity-card input,
+.electricity-card select{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:15px;
+outline:none;
+background:#fff;
+transition:.3s;
+box-sizing:border-box;
+}
+
+.electricity-card input:focus,
+.electricity-card select:focus{
+border-color:#6C2BD9;
+box-shadow:0 0 0 3px rgba(108,43,217,.12);
+}
+
+.verify-btn{
+width:100%;
+margin-top:18px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#17a2b8;
+color:#fff;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.verify-btn:hover{
+background:#138496;
+}
+
+.continue-btn{
+width:100%;
+margin-top:25px;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#6C2BD9;
+color:#fff;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.continue-btn:hover{
+background:#5521ad;
+}
+
+.alert{
+padding:14px;
+margin-bottom:20px;
+border-radius:10px;
+text-align:center;
+font-weight:600;
+}
+
+.alert.error{
+background:#ffe5e5;
+color:#dc3545;
+}
+
+.alert.success{
+background:#d4edda;
+color:#28a745;
+}
+
+@media(max-width:768px){
+
+.electricity-section{
+padding:15px;
+}
+
+.electricity-card{
+padding:20px;
+}
+
+.wallet-balance h3{
+font-size:24px;
+}
+
+.electricity-card input,
+.electricity-card select{
+font-size:14px;
+padding:14px;
+}
+
+.verify-btn,
+.continue-btn{
+padding:15px;
+font-size:15px;
+}
+
+}
