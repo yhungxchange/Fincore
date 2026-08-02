@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $_SESSION['data_network'] = $_POST['network'];
 $_SESSION['data_type']    = $_POST['data_type'];
+
 list($planName, $planPrice) = explode('|', $_POST['plan']);
 
 $_SESSION['data_plan'] = $planName;
