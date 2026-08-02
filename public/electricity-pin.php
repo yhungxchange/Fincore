@@ -55,4 +55,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-require __DIR__ . '/../views/cable-pin.php';
+require __DIR__ . '/../views/electricity-pin.php';
