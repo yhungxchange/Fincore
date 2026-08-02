@@ -103,7 +103,7 @@ try{
 
         'user_id' => $userId,
 
-        'type' => 'Cable',
+        'type' => 'cable',
 
         'description' => "$provider $bouquet ($smartcard)",
 
