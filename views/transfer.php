@@ -200,6 +200,8 @@ Continue
 <script src="/assets/js/dashboard.js"></script>
 
 <script>
+    
+alert("JavaScript Loaded");
 
 const verifyBtn = document.querySelector(".verify-btn");
 
