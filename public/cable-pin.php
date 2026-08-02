@@ -11,7 +11,7 @@ if (
     !isset($_SESSION['cable_provider']) ||
     !isset($_SESSION['cable_smartcard']) ||
     !isset($_SESSION['cable_bouquet']) ||
-    !isset($_SESSION['cable_amount']) ||
+    !isset($_SESSION['cable_amount']) 
 ) {
     header("Location: cable.php");
     exit;
