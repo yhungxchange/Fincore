@@ -254,7 +254,7 @@ recipientResult.className="success";
 
 recipientResult.innerHTML=
 "<i class='fa-solid fa-circle-check'></i> "+
-data.name;
+data.full_name;
 
 recipientId.value=data.id;
 
