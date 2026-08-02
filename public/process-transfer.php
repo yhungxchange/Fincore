@@ -240,7 +240,7 @@ $transaction->execute([
 
     "user_id" => $user_id,
 
-    "type" => "Transfer Out",
+    "type" => "transfer",
 
     "description" => "Transfer to ".$recipient_name,
 
@@ -267,7 +267,7 @@ $transaction->execute([
 
     "user_id" => $recipient_id,
 
-    "type" => "Transfer In",
+    "type" => "transfer",
 
     "description" => "Transfer from ".$sender['full_name'],
 
