@@ -37,7 +37,7 @@ if ($recipient == '') {
 $stmt = $pdo->prepare("
 SELECT
 id,
-full_name,
+name,
 username,
 email
 FROM users
@@ -78,7 +78,7 @@ echo json_encode([
 
     'id' => $user['id'],
 
-    'fullname' => $user['full_name'],
+    'fullname' => $user['name'],
 
     'username' => $user['username'],
 
