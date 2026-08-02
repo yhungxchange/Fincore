@@ -128,7 +128,7 @@ Logout
 
 <h2>Purchase Successful</h2>
 
-<p>Your airtime purchase was completed successfully.</p>
+<p>Your data purchase was completed successfully.</p>
 
 <div class="summary">
 
