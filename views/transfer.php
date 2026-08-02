@@ -230,7 +230,7 @@ return;
 
 timer=setTimeout(function(){
 
-fetch("/verify-recipient.php",{
+fetch("/public/verify-recipient.php",{
 
 method:"POST",
 
