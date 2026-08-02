@@ -1,11 +1,11 @@
-.data-section{
+.cable-section{
 display:flex;
 justify-content:center;
 margin-top:30px;
 padding:20px;
 }
 
-.data-card{
+.cable-card{
 width:100%;
 max-width:550px;
 background:#fff;
@@ -14,7 +14,7 @@ border-radius:20px;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-.data-card h2{
+.cable-card h2{
 text-align:center;
 margin-bottom:20px;
 color:#333;
@@ -41,7 +41,7 @@ font-size:28px;
 font-weight:700;
 }
 
-.data-card label{
+.cable-card label{
 display:block;
 margin-top:18px;
 margin-bottom:8px;
@@ -49,27 +49,45 @@ font-weight:600;
 color:#444;
 }
 
-.data-card input,
-.data-card select{
+.cable-card input,
+.cable-card select{
 width:100%;
 padding:15px;
 border:1px solid #ddd;
 border-radius:12px;
-outline:none;
 font-size:15px;
+outline:none;
 background:#fff;
 transition:.3s;
 }
 
-.data-card input:focus,
-.data-card select:focus{
+.cable-card input:focus,
+.cable-card select:focus{
 border-color:#6C2BD9;
 box-shadow:0 0 0 3px rgba(108,43,217,.12);
 }
 
+.verify-btn{
+width:100%;
+margin-top:18px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#17a2b8;
+color:#fff;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.verify-btn:hover{
+background:#138496;
+}
+
 .continue-btn{
 width:100%;
-margin-top:30px;
+margin-top:25px;
 padding:16px;
 border:none;
 border-radius:12px;
@@ -87,11 +105,11 @@ background:#5521ad;
 
 @media(max-width:768px){
 
-.data-section{
+.cable-section{
 padding:15px;
 }
 
-.data-card{
+.cable-card{
 padding:20px;
 }
 
@@ -99,4 +117,4 @@ padding:20px;
 font-size:24px;
 }
 
-  }
+}
