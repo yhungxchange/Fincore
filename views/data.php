@@ -198,7 +198,7 @@ Continue
 
 </main>
 
- </div>
+</div>
 
 <script src="/assets/js/dashboard.js"></script>
 
@@ -305,7 +305,7 @@ const plans = dataPlans[network.value][this.value];
 
 plans.forEach(plan=>{
 
-plan.innerHTML += `
+dataPlan.innerHTML += `
 <option value="${plan[1]}">
 ${plan[0]} - ₦${plan[1]}
 </option>`;
