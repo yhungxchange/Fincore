@@ -104,9 +104,9 @@ try {
 
         'user_id' => $userId,
 
-        'type' => 'Data Purchase',
+        'type' => 'Data',
 
-        'description' => "$network $dataType $dataPlan",
+        'description' => "$network $dataType $dataPlan ($phone)",
 
         'amount' => $amount,
 
