@@ -126,7 +126,7 @@ Logout
 
 <div class="summary-item">
 <span>Distribution Company</span>
-<strong><?= htmlspecialchars($_SESSION['electricity_company']) ?></strong>
+<strong><?= htmlspecialchars($_SESSION['electricity_disco']) ?></strong>
 </div>
 
 <div class="summary-item">
