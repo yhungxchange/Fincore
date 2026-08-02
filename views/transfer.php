@@ -232,7 +232,7 @@ timer=setTimeout(function(){
 
 fetch("verify-recipient.php",{
 
-method:"GET",
+method:"POST",
 
 headers:{
 "Content-Type":"application/x-www-form-urlencoded"
@@ -254,7 +254,7 @@ recipientResult.className="success";
 
 recipientResult.innerHTML=
 "<i class='fa-solid fa-circle-check'></i> "+
-data.fullname;
+data.name;
 
 recipientId.value=data.id;
 
