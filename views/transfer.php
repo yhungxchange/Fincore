@@ -230,9 +230,9 @@ return;
 
 timer=setTimeout(function(){
 
-fetch("/public/verify-recipient.php",{
+fetch("verify-recipient.php",{
 
-method:"POST",
+method:"GET",
 
 headers:{
 "Content-Type":"application/x-www-form-urlencoded"
