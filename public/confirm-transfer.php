@@ -2,126 +2,96 @@
 
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
+if(!isset($_SESSION['user_id'])){
+
+header("Location: login.php");
+
+exit;
+
 }
 
-$config = require __DIR__ . '/../config/database.php';
+$config=require __DIR__.'/../config/database.php';
 
-require __DIR__ . '/../app/Database.php';
+require __DIR__.'/../app/Database.php';
 
-$db = new Database($config);
-$pdo = $db->connection();
+$db=new Database($config);
 
-$user_id = $_SESSION['user_id'];
+$pdo=$db->connection();
 
-$recipient_id = intval($_POST['recipient_id'] ?? 0);
-$amount       = floatval($_POST['amount'] ?? 0);
-$narration    = trim($_POST['narration'] ?? '');
+$recipient_id=intval($_POST['recipient_id']??0);
 
-if ($recipient_id <= 0) {
+$amount=floatval($_POST['amount']??0);
 
-    $_SESSION['error'] = "Invalid recipient.";
+$narration=trim($_POST['narration']??'');
 
-    header("Location: transfer.php");
+if($recipient_id<=0){
 
-    exit;
+$_SESSION['error']="Invalid recipient.";
+
+header("Location: transfer.php");
+
+exit;
+
 }
 
-if ($amount < 100) {
+if($amount<100){
 
-    $_SESSION['error'] = "Minimum transfer is ₦100.";
+$_SESSION['error']="Minimum transfer is ₦100.";
 
-    header("Location: transfer.php");
+header("Location: transfer.php");
 
-    exit;
+exit;
+
 }
 
+$stmt=$pdo->prepare("
 
-/*
-|--------------------------------------------------------------------------
-| Sender
-|--------------------------------------------------------------------------
-*/
+SELECT
 
-$stmt = $pdo->prepare("
-SELECT id, full_name, wallet_balance
+id,
+
+full_name,
+
+username,
+
+email
+
 FROM users
-WHERE id = ?
+
+WHERE id=?
+
 LIMIT 1
-");
 
-$stmt->execute([$user_id]);
-
-$sender = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$sender) {
-
-    $_SESSION['error'] = "Sender account not found.";
-
-    header("Location: transfer.php");
-
-    exit;
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Balance Check
-|--------------------------------------------------------------------------
-*/
-
-if ($sender['wallet_balance'] < $amount) {
-
-    $_SESSION['error'] = "Insufficient wallet balance.";
-
-    header("Location: transfer.php");
-
-    exit;
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Recipient
-|--------------------------------------------------------------------------
-*/
-
-$stmt = $pdo->prepare("
-SELECT id, full_name, username, email
-FROM users
-WHERE id = ?
-LIMIT 1
 ");
 
 $stmt->execute([$recipient_id]);
 
-$recipient = $stmt->fetch(PDO::FETCH_ASSOC);
+$recipient=$stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$recipient) {
+if(!$recipient){
 
-    $_SESSION['error'] = "Recipient not found.";
+$_SESSION['error']="Recipient not found.";
 
-    header("Location: transfer.php");
+header("Location: transfer.php");
 
-    exit;
+exit;
+
 }
 
-$_SESSION['transfer'] = [
+$_SESSION['transfer']=[
 
-    'recipient_id' => $recipient['id'],
+"recipient_id"=>$recipient["id"],
 
-    'recipient_name' => $recipient['full_name'],
+"recipient_name"=>$recipient["full_name"],
 
-    'recipient_username' => $recipient['username'],
+"recipient_username"=>$recipient["username"],
 
-    'recipient_email' => $recipient['email'],
+"recipient_email"=>$recipient["email"],
 
-    'amount' => $amount,
+"amount"=>$amount,
 
-    'narration' => $narration
+"narration"=>$narration
 
 ];
 
-include __DIR__ . '/../views/confirm-transfer.php';
+require __DIR__.'/../views/confirm-transfer.php';
