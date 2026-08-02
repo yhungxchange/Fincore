@@ -139,7 +139,7 @@ Logout
 
 <div class="summary-item">
 <span>Meter Number</span>
-<strong><?= htmlspecialchars($electricity_meter_number) ?></strong>
+<strong><?= htmlspecialchars($meterNumber) ?></strong>
 </div>
 
 <div class="summary-item">
