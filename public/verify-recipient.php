@@ -5,17 +5,21 @@ session_start();
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {
+
     echo json_encode([
         'success' => false,
         'message' => 'Please login first.'
     ]);
+
     exit;
 }
 
 $config = require __DIR__ . '/../config/database.php';
+
 require __DIR__ . '/../app/Database.php';
 
 $db = new Database($config);
+
 $pdo = $db->connection();
 
 $recipient = trim($_POST['recipient'] ?? '');
