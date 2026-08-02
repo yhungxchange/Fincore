@@ -104,7 +104,7 @@ try {
 
         'user_id' => $userId,
 
-        'type' => 'Data',
+        'type' => 'data',
 
         'description' => "$network $dataType $dataPlan ($phone)",
 
