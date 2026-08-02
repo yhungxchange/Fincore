@@ -229,16 +229,20 @@ return;
 }
 
 fetch("verify-recipient.php",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
-
-body:"recipient="+encodeURIComponent(recipient)
-
+    method:"POST",
+    headers:{
+        "Content-Type":"application/x-www-form-urlencoded"
+    },
+    body:"recipient="+encodeURIComponent(recipient)
 })
+.then(response=>response.text())
+.then(data=>{
+
+    console.log(data);
+
+    alert(data);
+
+});
 
 .then(response=>response.json())
 
