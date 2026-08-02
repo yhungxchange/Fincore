@@ -138,8 +138,8 @@ Logout
 </div>
 
 <div class="summary-item">
-<span>Smart_card Number</span>
-<strong><?= htmlspecialchars($number) ?></strong>
+<span>Smartcard Number</span>
+<strong><?= htmlspecialchars($smart_card) ?></strong>
 </div>
 
 <div class="summary-item">
