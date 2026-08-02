@@ -131,6 +131,10 @@ Logout
 
 <form action="confirm-electricity.php" method="POST">
 
+<label>Distribution Company</label>
+
+<select name="distribution_company" required>
+  
 <option value="">Choose Distribution Company</option>
 
 <option value="IKEDC">Ikeja Electric</option>
