@@ -109,7 +109,7 @@ Logout
 
 <div class="welcome">
 <h1>Cable Subscription Successful</h1>
-<p>Your Cable TV subscription has been completed successfully.</p>
+<p>Your Cable TV subscription was successful.</p>
 </div>
 
 <div class="notify">
@@ -133,13 +133,13 @@ Logout
 <div class="summary">
 
 <div class="summary-item">
-<span>Network</span>
-<strong><?= htmlspecialchars($network) ?></strong>
+<span>Cable Provider</span>
+<strong><?= htmlspecialchars($provider) ?></strong>
 </div>
 
 <div class="summary-item">
-<span>Phone Number</span>
-<strong><?= htmlspecialchars($phone) ?></strong>
+<span>Smart_card Number</span>
+<strong><?= htmlspecialchars($number) ?></strong>
 </div>
 
 <div class="summary-item">
