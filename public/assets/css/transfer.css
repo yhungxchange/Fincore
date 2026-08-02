@@ -154,4 +154,27 @@ padding:15px;
 font-size:15px;
 }
 
+.continue-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(124,58,237,.3);
+}
+
+.continue-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(124,58,237,.4);
+}
+
+.continue-btn i{
+    margin-right:8px;
+}
+
 }
