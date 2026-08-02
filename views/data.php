@@ -305,7 +305,7 @@ const plans = dataPlans[network.value][this.value];
 
 plans.forEach(plan=>{
 
-Dataplan.innerHTML += `
+dataplan.innerHTML += `
 <option value="${plan[0]}|${plan[1]}">
 ${plan[0]} - ₦${plan[1]}
 </option>`;
