@@ -4,10 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FinCore Transfer</title>
+<title>Wallet Transfer</title>
 
 <link rel="stylesheet" href="/assets/css/dashboard.css">
 <link rel="stylesheet" href="/assets/css/transfer.css">
@@ -20,8 +19,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <body>
 
 <div class="dashboard">
-
-<!-- SIDEBAR -->
 
 <aside id="sidebar" class="sidebar">
 
@@ -108,12 +105,17 @@ Logout
 </button>
 
 <div class="welcome">
+
 <h1>Wallet Transfer</h1>
-<p>Transfer money to another FinCore user.</p>
+
+<p>Transfer funds to another FinCore user.</p>
+
 </div>
 
 <div class="notify">
+
 <i class="fa-solid fa-bell"></i>
+
 </div>
 
 </header>
@@ -122,30 +124,33 @@ Logout
 
 <div class="transfer-card">
 
-<h2>Transfer Funds</h2>
+<h2>Transfer Money</h2>
 
 <div class="wallet-balance">
-<p>Wallet Balance</p>
+
+<p>Available Balance</p>
+
 <h3>₦<?= number_format($balance,2) ?></h3>
+
 </div>
 
-<?php if(isset($_SESSION['error'])): ?>
+<form
+action="confirm-transfer.php"
+method="POST"
+id="transferForm">
 
-<div class="alert error">
-<?= $_SESSION['error']; unset($_SESSION['error']); ?>
-</div>
+<label>
 
-<?php endif; ?>
+Recipient Username / Email
 
-<form action="confirm-transfer.php" method="POST">
-
-<label>Recipient Username or Email</label>
+</label>
 
 <input
 type="text"
 name="recipient"
 id="recipient"
-placeholder="Enter Username or Email"
+autocomplete="off"
+placeholder="Enter username or email"
 required>
 
 <input
@@ -153,35 +158,39 @@ type="hidden"
 name="recipient_id"
 id="recipient_id">
 
-<button
-type="button"
-class="verify-btn">
+<div
+id="recipientResult"
+class="recipient-result">
 
-Verify Recipient
+</div>
 
-</button>
+<label>
 
-<div id="recipientResult"></div>
+Amount
 
-<label>Amount</label>
+</label>
 
 <input
 type="number"
 name="amount"
 min="100"
-placeholder="Enter Amount"
+placeholder="Enter amount"
 required>
 
-<label>Narration (Optional)</label>
+<label>
+
+Narration (Optional)
+
+</label>
 
 <input
 type="text"
 name="narration"
-placeholder="Enter Narration">
+placeholder="Enter narration">
 
 <button
-type="submit"
-class="continue-btn">
+class="continue-btn"
+type="submit">
 
 Continue
 
@@ -201,30 +210,26 @@ Continue
 
 <script>
 
-const verifyBtn = document.querySelector(".verify-btn");
+const recipient=document.getElementById("recipient");
+const recipientId=document.getElementById("recipient_id");
+const recipientResult=document.getElementById("recipientResult");
 
-verifyBtn.addEventListener("click", function(){
+let timer=null;
 
-const recipient =
-document.getElementById("recipient").value.trim();
+recipient.addEventListener("keyup",function(){
 
-const result =
-document.getElementById("recipientResult");
-
-const recipientId =
-document.getElementById("recipient_id");
-
-if(recipient===""){
-
-result.className="error";
-
-result.style.display="block";
-
-result.innerHTML="Please enter recipient username or email.";
+clearTimeout(timer);
 
 recipientId.value="";
 
+recipientResult.style.display="none";
+
+if(this.value.trim().length<3){
 return;
+}
+
+timer=setTimeout(function(){
+
 fetch("verify-recipient.php",{
 
 method:"POST",
@@ -233,7 +238,7 @@ headers:{
 "Content-Type":"application/x-www-form-urlencoded"
 },
 
-body:"recipient="+encodeURIComponent(recipient)
+body:"recipient="+encodeURIComponent(recipient.value.trim())
 
 })
 
@@ -243,23 +248,25 @@ body:"recipient="+encodeURIComponent(recipient)
 
 if(data.success){
 
-result.className="success";
-result.style.display="block";
+recipientResult.style.display="block";
 
-result.innerHTML=
-"<i class='fa-solid fa-circle-check'></i> "
-+data.fullname;
+recipientResult.className="success";
+
+recipientResult.innerHTML=
+"<i class='fa-solid fa-circle-check'></i> "+
+data.fullname;
 
 recipientId.value=data.id;
 
 }else{
 
-result.className="error";
-result.style.display="block";
+recipientResult.style.display="block";
 
-result.innerHTML=
-"<i class='fa-solid fa-circle-xmark'></i> "
-+data.message;
+recipientResult.className="error";
+
+recipientResult.innerHTML=
+"<i class='fa-solid fa-circle-xmark'></i> "+
+data.message;
 
 recipientId.value="";
 
@@ -271,21 +278,28 @@ recipientId.value="";
 
 console.log(error);
 
-result.className="error";
-result.style.display="block";
-result.innerHTML="Network Error. Try again.";
+recipientResult.style.display="block";
 
-recipientId.value="";
+recipientResult.className="error";
+
+recipientResult.innerHTML=
+"Unable to verify recipient.";
 
 });
 
-document.querySelector("form").addEventListener("submit",function(e){
+},500);
 
-if(document.getElementById("recipient_id").value===""){
+});
+
+document
+.getElementById("transferForm")
+.addEventListener("submit",function(e){
+
+if(recipientId.value===""){
 
 e.preventDefault();
 
-alert("Please verify recipient before continuing.");
+alert("Please enter a valid recipient.");
 
 }
 
