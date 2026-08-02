@@ -126,7 +126,7 @@ Logout
 
 <div class="summary-item">
 <span>Distribution Company</span>
-<strong><?= htmlspecialchars($_SESSION['electricity_disco']) ?></strong>
+<strong><?= htmlspecialchars($_SESSION['electricity_company']) ?></strong>
 </div>
 
 <div class="summary-item">
@@ -141,7 +141,7 @@ Logout
 
 <div class="summary-item">
 <span>Amount</span>
-<strong>₦<?= number_format($_SESSION['cable_amount'],2) ?></strong>
+<strong>₦<?= number_format($_SESSION['electricity_amount'],2) ?></strong>
 </div>
   
 <div class="summary-item">
