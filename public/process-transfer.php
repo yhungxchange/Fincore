@@ -151,7 +151,9 @@ $balance_after_recipient = $balance_before_recipient + $amount;
 |--------------------------------------------------------------------------
 */
 
-$reference = "TRF".time().rand(100,999);
+$senderReference = "TRFOUT".time().rand(1000,9999);
+
+$recipientReference = "TRFIN".time().rand(1000,9999);
 
 /*
 |--------------------------------------------------------------------------
@@ -250,7 +252,7 @@ $transaction->execute([
 
     "status" => "Successful",
 
-    "reference" => $reference
+    "reference" => $senderReference
 
 ]);
 
@@ -277,7 +279,7 @@ $transaction->execute([
 
     "status" => "Successful",
 
-    "reference" => $reference
+    "reference" => $recipientReference
 
 ]);
 
@@ -305,13 +307,13 @@ unset($_SESSION['transfer']);
 
 $_SESSION['transfer_success'] = [
 
-    "recipient_name" => $recipient_name,
+    "recipient_name"=>$recipient_name,
 
-    "amount" => $amount,
+    "amount"=>$amount,
 
-    "reference" => $reference,
+    "reference"=>$senderReference,
 
-    "narration" => $narration
+    "narration"=>$narration
 
 ];
 
