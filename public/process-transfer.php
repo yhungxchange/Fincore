@@ -19,6 +19,7 @@ $db = new Database($config);
 $pdo = $db->connection();
 
 $user_id = $_SESSION['user_id'];
+
 $pin = trim($_POST['pin'] ?? '');
 
 if ($pin == "") {
@@ -30,10 +31,9 @@ if ($pin == "") {
     exit;
 }
 
-
 /*
 |--------------------------------------------------------------------------
-| Load Sender Information
+| Sender Details
 |--------------------------------------------------------------------------
 */
 
@@ -60,7 +60,6 @@ if (!$sender) {
     die("Sender account not found.");
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | Verify Transaction PIN
@@ -76,27 +75,29 @@ if (!password_verify($pin, $sender['transaction_pin'])) {
     exit;
 }
 
-
 /*
 |--------------------------------------------------------------------------
-| Load Transfer Details
+| Transfer Details
 |--------------------------------------------------------------------------
 */
 
 $recipient_id = $_SESSION['transfer']['recipient_id'];
 
+$recipient_name = $_SESSION['transfer']['recipient_name'];
+
 $amount = floatval($_SESSION['transfer']['amount']);
 
-$narration = $_SESSION['transfer']['narration'];
-
+$narration = trim($_SESSION['transfer']['narration']);
 
 /*
 |--------------------------------------------------------------------------
-| Check Wallet Balance
+| Check Sender Balance
 |--------------------------------------------------------------------------
 */
 
-if ($sender['balance'] < $amount) {
+$balance_before_sender = floatval($sender['balance']);
+
+if ($balance_before_sender < $amount) {
 
     $_SESSION['error'] = "Insufficient wallet balance.";
 
@@ -105,4 +106,241 @@ if ($sender['balance'] < $amount) {
     exit;
 }
 
-echo "PIN VERIFIED ✅";
+/*
+|--------------------------------------------------------------------------
+| Recipient Wallet
+|--------------------------------------------------------------------------
+*/
+
+$stmt = $pdo->prepare("
+SELECT
+    u.id,
+    u.full_name,
+    w.balance
+FROM users u
+JOIN wallets w
+ON u.id = w.user_id
+WHERE u.id = :recipient_id
+LIMIT 1
+");
+
+$stmt->execute([
+    "recipient_id" => $recipient_id
+]);
+
+$recipient = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$recipient) {
+
+    $_SESSION['error'] = "Recipient account not found.";
+
+    header("Location: transfer.php");
+
+    exit;
+}
+
+$balance_before_recipient = floatval($recipient['balance']);
+
+$balance_after_sender = $balance_before_sender - $amount;
+
+$balance_after_recipient = $balance_before_recipient + $amount;
+
+/*
+|--------------------------------------------------------------------------
+| Generate Reference
+|--------------------------------------------------------------------------
+*/
+
+$reference = "TRF".time().rand(100,999);
+
+/*
+|--------------------------------------------------------------------------
+| Begin Transaction
+|--------------------------------------------------------------------------
+*/
+
+try {
+
+    $pdo->beginTransaction();
+
+/*
+|--------------------------------------------------------------------------
+| Deduct Sender Wallet
+|--------------------------------------------------------------------------
+*/
+
+$stmt = $pdo->prepare("
+UPDATE wallets
+SET balance = :balance
+WHERE user_id = :user_id
+");
+
+$stmt->execute([
+    "balance" => $balance_after_sender,
+    "user_id" => $user_id
+]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Credit Recipient Wallet
+|--------------------------------------------------------------------------
+*/
+
+$stmt = $pdo->prepare("
+UPDATE wallets
+SET balance = :balance
+WHERE user_id = :user_id
+");
+
+$stmt->execute([
+    "balance" => $balance_after_recipient,
+    "user_id" => $recipient_id
+]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Sender Transaction
+|--------------------------------------------------------------------------
+*/
+
+$transaction = $pdo->prepare("
+INSERT INTO transactions
+(
+    user_id,
+    type,
+    description,
+    amount,
+    balance_before,
+    balance_after,
+    status,
+    reference,
+    created_at,
+    updated_at
+)
+VALUES
+(
+    :user_id,
+    :type,
+    :description,
+    :amount,
+    :balance_before,
+    :balance_after,
+    :status,
+    :reference,
+    NOW(),
+    NOW()
+)
+");
+
+$transaction->execute([
+
+    "user_id" => $user_id,
+
+    "type" => "Transfer Out",
+
+    "description" => "Transfer to ".$recipient_name,
+
+    "amount" => $amount,
+
+    "balance_before" => $balance_before_sender,
+
+    "balance_after" => $balance_after_sender,
+
+    "status" => "Successful",
+
+    "reference" => $reference
+
+]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Recipient Transaction
+|--------------------------------------------------------------------------
+*/
+
+$transaction->execute([
+
+    "user_id" => $recipient_id,
+
+    "type" => "Transfer In",
+
+    "description" => "Transfer from ".$sender['full_name'],
+
+    "amount" => $amount,
+
+    "balance_before" => $balance_before_recipient,
+
+    "balance_after" => $balance_after_recipient,
+
+    "status" => "Successful",
+
+    "reference" => $reference
+
+]);
+
+/*
+|--------------------------------------------------------------------------
+| Commit Transaction
+|--------------------------------------------------------------------------
+*/
+
+$pdo->commit();
+
+/*
+|--------------------------------------------------------------------------
+| Clear Transfer Session
+|--------------------------------------------------------------------------
+*/
+
+unset($_SESSION['transfer']);
+
+/*
+|--------------------------------------------------------------------------
+| Save Success Details
+|--------------------------------------------------------------------------
+*/
+
+$_SESSION['transfer_success'] = [
+
+    "recipient_name" => $recipient_name,
+
+    "amount" => $amount,
+
+    "reference" => $reference,
+
+    "narration" => $narration
+
+];
+
+/*
+|--------------------------------------------------------------------------
+| Redirect
+|--------------------------------------------------------------------------
+*/
+
+header("Location: transfer-success.php");
+
+exit;
+
+} catch (Exception $e) {
+
+/*
+|--------------------------------------------------------------------------
+| Rollback
+|--------------------------------------------------------------------------
+*/
+
+if ($pdo->inTransaction()) {
+    $pdo->rollBack();
+}
+
+$_SESSION['error'] = "Transfer failed. Please try again.";
+
+header("Location: transfer.php");
+
+exit;
+
+}
