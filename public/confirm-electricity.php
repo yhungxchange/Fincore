@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$_SESSION['electricity_disco'] = $_POST['disco'];
+$_SESSION['electricity_disco'] = $_POST['distribution_company'];
 $_SESSION['electricity_meter_type'] = $_POST['meter_type'];
 $_SESSION['electricity_meter_number'] = trim($_POST['meter_number']);
 $_SESSION['electricity_amount'] = (float)$_POST['amount'];
