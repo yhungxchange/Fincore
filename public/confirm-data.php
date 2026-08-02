@@ -14,7 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $_SESSION['data_network'] = $_POST['network'];
 $_SESSION['data_type']    = $_POST['data_type'];
-$_SESSION['data_plan']    = $_POST['plan'];
+list($planName, $planPrice) = explode('|', $_POST['plan']);
+
+$_SESSION['data_plan'] = $planName;
+$_SESSION['data_amount'] = $planPrice;
 $_SESSION['data_phone']   = trim($_POST['phone']);
 
 $config = require __DIR__ . '/../config/database.php';
