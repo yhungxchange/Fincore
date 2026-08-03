@@ -13,6 +13,22 @@ require __DIR__ . '/../app/Database.php';
 $db = new Database($config);
 $pdo = $db->connection();
 
+/*
+|--------------------------------------------------------------------------
+| Admin PIN Reset Message
+|--------------------------------------------------------------------------
+*/
+
+$message = "";
+
+if (isset($_SESSION['pin_reset'])) {
+
+    $message = "🔐 Your Transaction PIN has been reset by the administrator. Please create a new Transaction PIN to continue.";
+
+    unset($_SESSION['pin_reset']);
+
+}
+
 $userId = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,5 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: dashboard.php");
     exit;
 }
+
+$pinResetMessage = $message;
 
 require __DIR__ . '/../views/set-transaction-pin.php';
