@@ -624,6 +624,16 @@ padding:10px 14px;
 font-size:13px;
 }
 
+.notify{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
 .notification-icon{
 
 position:relative;
@@ -638,13 +648,13 @@ width:45px;
 
 height:45px;
 
-border-radius:50%;
-
 background:#fff;
 
-color:#6C2BD9;
+border-radius:50%;
 
 text-decoration:none;
+
+color:#6C2BD9;
 
 font-size:20px;
 
@@ -664,9 +674,9 @@ transform:translateY(-2px);
 
 position:absolute;
 
-top:-5px;
+top:-6px;
 
-right:-5px;
+right:-6px;
 
 background:#ff3b30;
 
@@ -674,7 +684,7 @@ color:#fff;
 
 font-size:11px;
 
-font-weight:bold;
+font-weight:700;
 
 min-width:20px;
 
@@ -691,6 +701,8 @@ align-items:center;
 justify-content:center;
 
 border:2px solid #fff;
+
+line-height:1;
 
 }
 
