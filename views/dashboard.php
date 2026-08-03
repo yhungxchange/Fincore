@@ -138,8 +138,10 @@ Manage your finances with confidence.
 
 <div class="notify">
 
-<i class="fa-solid fa-bell"></i>
-
+<a href="notifications.php" class="notification-icon">
+    <i class="fa-solid fa-bell"></i>
+</a>
+    
 </div>
 
 </header>
