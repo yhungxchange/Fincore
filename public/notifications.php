@@ -26,4 +26,21 @@ $stmt->execute([
 
 $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+/*
+|--------------------------------------------------------------------------
+| Mark All Notifications As Read
+|--------------------------------------------------------------------------
+*/
+
+$markRead = $pdo->prepare("
+    UPDATE notifications
+    SET is_read = TRUE
+    WHERE user_id = :user_id
+    AND is_read = FALSE
+");
+
+$markRead->execute([
+    "user_id" => $_SESSION['user_id']
+]);
+
 require __DIR__ . '/../views/notifications.php';
