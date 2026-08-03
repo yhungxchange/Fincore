@@ -100,7 +100,6 @@ Logout
 
 </aside>
   
-
 <div class="main-content">
 
 <div class="top-bar">
@@ -108,14 +107,6 @@ Logout
 <h2>Notifications</h2>
 
 <div class="notification-summary">
-
-You have
-
-<strong><?= $unreadCount ?></strong>
-
-unread notification(s)
-
-</div>
 
 </div>
 
