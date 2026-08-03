@@ -75,7 +75,13 @@ class="search-btn">
 <br><br>
 
 <a href="credit-wallet.php?id=<?= $user['id'] ?>"
-class="search-btn">
+class="search-btn"><a href="debit-wallet.php?id=<?= $user['id'] ?>"
+class="search-btn"
+style="background:#dc3545;">
+
+➖ Debit Wallet
+
+</a>
 
 💰 Credit Wallet
 
