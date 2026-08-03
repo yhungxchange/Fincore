@@ -229,4 +229,3 @@ exit;
     header("Location: dashboard.php");
     exit;
 }
-}
