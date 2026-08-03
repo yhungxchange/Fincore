@@ -24,6 +24,25 @@
 
 <br>
 
+<form method="GET">
+
+<input
+type="text"
+name="search"
+placeholder="Search by name, username, email or phone..."
+value="<?= htmlspecialchars($search) ?>"
+class="search-box">
+
+<button class="search-btn">
+
+Search
+
+</button>
+
+</form>
+  
+<br>
+
 <table class="admin-table">
 
 <thead>
