@@ -103,3 +103,51 @@ border-bottom:1px solid #eee;
 background:#f7f5ff;
 
 }
+
+.search-box{
+
+width:320px;
+
+padding:12px 15px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+.search-box:focus{
+
+border-color:#6D4DFF;
+
+}
+
+.search-btn{
+
+padding:12px 20px;
+
+border:none;
+
+border-radius:12px;
+
+background:#6D4DFF;
+
+color:#fff;
+
+font-weight:600;
+
+cursor:pointer;
+
+margin-left:8px;
+
+}
+
+.search-btn:hover{
+
+opacity:.9;
+
+}
