@@ -8,8 +8,7 @@
 
 <title>Transfer Successful</title>
 
-<link rel="stylesheet" href="/assets/css/dashboard.css">
-<link rel="stylesheet" href="/assets/css/transfer.css">
+<link rel="stylesheet" href="/assets/css/transfer-success.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
@@ -18,91 +17,50 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <body>
 
-<div class="dashboard">
+<div class="success-wrapper">
 
-<main class="content">
+<div class="success-card">
 
-<section class="transfer-section">
-
-<div class="transfer-card success-card">
-
-<div class="success-icon">
+<div class="icon">
 
 <i class="fa-solid fa-circle-check"></i>
 
 </div>
 
-<h2>Transfer Successful</h2>
+<h1>Transfer Successful</h1>
 
-<p class="success-text">
+<p>Your transfer has been completed successfully.</p>
 
-Your transfer has been completed successfully.
+<div class="details">
 
-</p>
-
-<div class="summary-item">
-
+<div class="item">
 <span>Recipient</span>
-
-<strong>
-
-<?= htmlspecialchars($_SESSION['transfer_success']['recipient_name']) ?>
-
-</strong>
-
+<strong><?= htmlspecialchars($data['recipient']) ?></strong>
 </div>
 
-<div class="summary-item">
-
+<div class="item">
 <span>Amount</span>
-
-<strong>
-
-₦<?= number_format($_SESSION['transfer_success']['amount'],2) ?>
-
-</strong>
-
+<strong>₦<?= number_format($data['amount'],2) ?></strong>
 </div>
 
-<div class="summary-item">
-
+<div class="item">
 <span>Reference</span>
-
-<strong>
-
-<?= $_SESSION['transfer_success']['reference'] ?>
-
-</strong>
-
+<strong><?= htmlspecialchars($data['reference']) ?></strong>
 </div>
 
-<div class="summary-item">
-
+<div class="item">
 <span>Narration</span>
-
-<strong>
-
-<?= htmlspecialchars($_SESSION['transfer_success']['narration']) ?: "None" ?>
-
-</strong>
-
+<strong><?= htmlspecialchars($data['narration']) ?></strong>
 </div>
 
-<div class="summary-item">
-
+<div class="item">
 <span>Date</span>
-
-<strong>
-
-<?= date("d M Y h:i A") ?>
-
-</strong>
+<strong><?= date("d M Y h:i A") ?></strong>
+</div>
 
 </div>
 
-<br>
-
-<a href="dashboard.php" class="continue-btn">
+<a href="dashboard.php" class="done-btn">
 
 <i class="fa-solid fa-house"></i>
 
@@ -112,16 +70,8 @@ Done
 
 </div>
 
-</section>
-
-</main>
-
 </div>
 
 </body>
 
 </html>
-
-<?php
-unset($_SESSION['transfer_success']);
-?>
