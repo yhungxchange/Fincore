@@ -72,6 +72,15 @@ href="/assets/css/admin.css">
 
 class="search-btn">
 
+<br><br>
+
+<a href="credit-wallet.php?id=<?= $user['id'] ?>"
+class="search-btn">
+
+💰 Credit Wallet
+
+</a>
+  
 ← Back
 
 </a>
