@@ -106,6 +106,8 @@ style="background:#22c55e;">
 
 </a>
 
+<?php endif; ?>
+ 
  <a href="reset-pin.php?id=<?= $user['id'] ?>"
 class="search-btn"
 style="background:#ff9800;">
