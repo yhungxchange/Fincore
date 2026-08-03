@@ -124,8 +124,6 @@ Good Afternoon,
 
 <?= htmlspecialchars($_SESSION['username']) ?>
 
-👋
-
 </h1>
 
 <p>
@@ -133,7 +131,9 @@ Good Afternoon,
 Manage your finances with confidence.
 
 </p>
-
+    
+</div>
+    
 <div class="notify">
 
 <a href="notifications.php" class="notification-icon">
