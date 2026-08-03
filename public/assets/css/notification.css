@@ -1,0 +1,87 @@
+.notifications-card{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+}
+
+.notification{
+
+padding:18px;
+
+border-radius:15px;
+
+margin-bottom:15px;
+
+border-left:5px solid #6C2BD9;
+
+background:#fafafa;
+
+}
+
+.notification h3{
+
+margin:0 0 8px;
+
+font-size:18px;
+
+color:#222;
+
+}
+
+.notification p{
+
+margin:0;
+
+color:#555;
+
+line-height:1.6;
+
+}
+
+.notification small{
+
+display:block;
+
+margin-top:10px;
+
+color:#888;
+
+}
+
+.unread{
+
+background:#f4efff;
+
+}
+
+.read{
+
+opacity:.75;
+
+}
+
+.empty{
+
+text-align:center;
+
+padding:50px 20px;
+
+color:#999;
+
+}
+
+.empty i{
+
+font-size:55px;
+
+margin-bottom:15px;
+
+color:#6C2BD9;
+
+}
