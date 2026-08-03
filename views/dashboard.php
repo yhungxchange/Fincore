@@ -134,14 +134,24 @@ Manage your finances with confidence.
 
 </p>
 
-</div>
-
 <div class="notify">
 
 <a href="notifications.php" class="notification-icon">
+
     <i class="fa-solid fa-bell"></i>
+
+    <?php if($notificationCount > 0): ?>
+
+        <span class="notification-badge">
+
+            <?= $notificationCount ?>
+
+        </span>
+
+    <?php endif; ?>
+
 </a>
-    
+
 </div>
 
 </header>
