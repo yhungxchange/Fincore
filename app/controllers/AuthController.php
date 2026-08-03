@@ -207,6 +207,8 @@ if (empty($password)) {
 header("Location: account-locked.php");
 
 exit;
+        
+ } 
     
     // Invalid login
     if (!$user || !password_verify($password, $user['password_hash'])) {
