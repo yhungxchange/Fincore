@@ -116,8 +116,6 @@ style="background:#ff9800;">
 
  </a>
 
-<?php endif; ?>
-
 <a href="users.php"
 class="search-btn"
 style="background:#888;">
