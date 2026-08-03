@@ -59,3 +59,47 @@ color:#777;
 font-size:15px;
 
 }
+
+.admin-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:25px;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+}
+
+.admin-table th{
+
+background:#6D4DFF;
+
+color:#fff;
+
+padding:15px;
+
+text-align:left;
+
+}
+
+.admin-table td{
+
+padding:15px;
+
+border-bottom:1px solid #eee;
+
+}
+
+.admin-table tr:hover{
+
+background:#f7f5ff;
+
+}
