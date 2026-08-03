@@ -14,7 +14,7 @@ $pdo = $db->connection();
 |--------------------------------------------------------------------------
 */
 
-$email = "YOUR_EMAIL_HERE";
+$email = "yhungfx@gmail.com";
 
 $stmt = $pdo->prepare("
     UPDATE users
