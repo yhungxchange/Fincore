@@ -35,7 +35,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <div class="item">
 <span>Recipient</span>
-<strong><?= htmlspecialchars($data['recipient']) ?></strong>
+<strong><?= htmlspecialchars($data['recipient_name']) ?></strong>
 </div>
 
 <div class="item">
