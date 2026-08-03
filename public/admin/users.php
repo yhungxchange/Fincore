@@ -44,7 +44,9 @@ if (!$admin || !$admin['is_admin']) {
 |--------------------------------------------------------------------------
 */
 
-$users = $pdo->query("
+$search = trim($_GET['search'] ?? '');
+
+$stmt = $pdo->prepare("
 SELECT
 u.id,
 u.full_name,
@@ -56,7 +58,18 @@ u.created_at
 FROM users u
 LEFT JOIN wallets w
 ON u.id = w.user_id
+WHERE
+u.full_name ILIKE :search
+OR u.username ILIKE :search
+OR u.email ILIKE :search
+OR u.phone ILIKE :search
 ORDER BY u.id DESC
-")->fetchAll(PDO::FETCH_ASSOC);
+");
+
+$stmt->execute([
+    "search" => "%{$search}%"
+]);
+
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 require __DIR__ . '/../../views/admin-users.php';
