@@ -4,15 +4,17 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Notifications</title>
 
 <link rel="stylesheet" href="/assets/css/dashboard.css">
+
 <link rel="stylesheet" href="/assets/css/notifications.css">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -97,42 +99,99 @@ Logout
 </nav>
 
 </aside>
+  
 
-<main class="content">
+<div class="main-content">
 
-<header class="top-header">
+<div class="top-bar">
 
-<h1>Notifications</h1>
+<h2>Notifications</h2>
 
-</header>
+<div class="notification-summary">
 
-<div class="notifications-card">
+You have
+
+<strong><?= $unreadCount ?></strong>
+
+unread notification(s)
+
+</div>
+
+</div>
+
+<div class="notification-list">
 
 <?php if(empty($notifications)): ?>
 
-<div class="empty">
+<div class="empty-state">
 
-<i class="fa-solid fa-bell-slash"></i>
+<i class="fa-regular fa-bell-slash"></i>
 
-<p>No notifications yet.</p>
+<h3>No Notifications</h3>
+
+<p>Your notifications will appear here.</p>
 
 </div>
 
 <?php else: ?>
 
-<?php foreach($notifications as $note): ?>
+<?php foreach($notifications as $row): ?>
 
-<div class="notification <?= $note['is_read'] ? 'read' : 'unread' ?>">
+<div class="notification-card <?= $row['is_read'] ? 'read' : 'unread' ?>">
 
-<h3><?= htmlspecialchars($note['title']) ?></h3>
+<div class="notification-icon">
 
-<p><?= htmlspecialchars($note['message']) ?></p>
+<?php
 
-<small>
+switch($row['type']){
 
-<?= date("d M Y h:i A", strtotime($note['created_at'])) ?>
+case 'transfer':
 
-</small>
+echo '<i class="fa-solid fa-money-bill-transfer"></i>';
+
+break;
+
+case 'wallet':
+
+echo '<i class="fa-solid fa-wallet"></i>';
+
+break;
+
+case 'airtime':
+
+echo '<i class="fa-solid fa-mobile-screen"></i>';
+
+break;
+
+case 'data':
+
+echo '<i class="fa-solid fa-wifi"></i>';
+
+break;
+
+default:
+
+echo '<i class="fa-solid fa-bell"></i>';
+
+}
+
+?>
+
+</div>
+
+<div class="notification-body">
+
+<h3><?= htmlspecialchars($row['title']) ?></h3>
+
+<p><?= htmlspecialchars($row['message']) ?></p>
+
+<span>
+
+<?= date("d M Y h:i A",strtotime($row['created_at'])) ?>
+
+</span>
+
+</div>
 
 </div>
 
@@ -142,7 +201,7 @@ Logout
 
 </div>
 
-</main>
+</div>
 
 </div>
 
