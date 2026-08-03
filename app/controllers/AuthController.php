@@ -199,6 +199,15 @@ if (empty($password)) {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    if ($user && !$user['is_active']) {
+
+        $_SESSION['locked_message'] =
+"Your FinCore account has been temporarily locked by the administrator. If you believe this is a mistake, kindly contact FinCore Support.";
+
+header("Location: account-locked.php");
+
+exit;
+    
     // Invalid login
     if (!$user || !password_verify($password, $user['password_hash'])) {
 
