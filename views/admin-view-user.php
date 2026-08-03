@@ -68,14 +68,17 @@ href="/assets/css/admin.css">
 
 <br>
 
-<a href="users.php"
-
-class="search-btn">
-
-<br><br>
+<div class="action-buttons">
 
 <a href="credit-wallet.php?id=<?= $user['id'] ?>"
-class="search-btn"><a href="debit-wallet.php?id=<?= $user['id'] ?>"
+class="search-btn"
+style="background:#6D4DFF;">
+
+💰 Credit Wallet
+
+</a>
+
+<a href="debit-wallet.php?id=<?= $user['id'] ?>"
 class="search-btn"
 style="background:#dc3545;">
 
@@ -83,10 +86,10 @@ style="background:#dc3545;">
 
 </a>
 
-💰 Credit Wallet
+<a href="users.php"
+class="search-btn"
+style="background:#888;">
 
-</a>
-  
 ← Back
 
 </a>
