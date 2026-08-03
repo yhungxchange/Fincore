@@ -12,6 +12,7 @@ if (!isset($_SESSION['transfer'])) {
     exit;
 }
 
+require __DIR__ . '/../app/helpers/Notification.php';
 $config = require __DIR__ . '/../config/database.php';
 require __DIR__ . '/../app/Database.php';
 
@@ -290,6 +291,49 @@ $transaction->execute([
 */
 
 $pdo->commit();
+
+$notification = new Notification($pdo);
+
+/*
+|--------------------------------------------------------------------------
+| Sender Notification
+|--------------------------------------------------------------------------
+*/
+
+$notification->create(
+
+    $user_id,
+
+    "Transfer Successful",
+
+    "₦" . number_format($amount,2) .
+    " was sent successfully to " .
+    $recipient_name . ".",
+
+    "transfer"
+
+);
+
+/*
+|--------------------------------------------------------------------------
+| Recipient Notification
+|--------------------------------------------------------------------------
+*/
+
+$notification->create(
+
+    $recipient_id,
+
+    "Wallet Credited",
+
+    "You received ₦" .
+    number_format($amount,2) .
+    " from " .
+    $sender['full_name'] . ".",
+
+    "transfer"
+
+);    
 
 /*
 |--------------------------------------------------------------------------
