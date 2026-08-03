@@ -86,6 +86,28 @@ style="background:#dc3545;">
 
 </a>
 
+ <?php if($user['is_active']): ?>
+
+<a href="toggle-user.php?id=<?= $user['id'] ?>&action=lock"
+class="search-btn"
+style="background:#ff9800;">
+
+🔒 Lock User
+
+</a>
+
+<?php else: ?>
+
+<a href="toggle-user.php?id=<?= $user['id'] ?>&action=unlock"
+class="search-btn"
+style="background:#22c55e;">
+
+🔓 Unlock User
+
+</a>
+
+<?php endif; ?>
+
 <a href="users.php"
 class="search-btn"
 style="background:#888;">
