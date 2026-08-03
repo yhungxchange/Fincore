@@ -55,4 +55,30 @@ die("❌ Access Denied.");
 |--------------------------------------------------------------------------
 */
 
+/*
+|--------------------------------------------------------------------------
+| Dashboard Statistics
+|--------------------------------------------------------------------------
+*/
+
+$totalUsers = $pdo->query("
+SELECT COUNT(*)
+FROM users
+")->fetchColumn();
+
+$totalWallet = $pdo->query("
+SELECT COALESCE(SUM(balance),0)
+FROM wallets
+")->fetchColumn();
+
+$totalTransactions = $pdo->query("
+SELECT COUNT(*)
+FROM transactions
+")->fetchColumn();
+
+$totalNotifications = $pdo->query("
+SELECT COUNT(*)
+FROM notifications
+")->fetchColumn();
+
 require __DIR__ . '/../../views/admin-dashboard.php';
