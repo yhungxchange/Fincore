@@ -26,6 +26,11 @@ $stmt->execute([
 
 $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
 
+if(empty($user['transaction_pin'])){
+    header("Location:set-pin.php");
+    exit;
+}
+
 $balance = $wallet['balance'] ?? 0;
 
 require __DIR__ . '/../views/airtime.php';
