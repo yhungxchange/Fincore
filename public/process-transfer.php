@@ -57,22 +57,6 @@ $stmt->execute([
 
 $sender = $stmt->fetch(PDO::FETCH_ASSOC);
 
-/*
-|--------------------------------------------------------------------------
-| Has Transaction PIN?
-|--------------------------------------------------------------------------
-*/
-
-if(empty($sender['transaction_pin'])){
-
-$_SESSION['error']="Please create your Transaction PIN first.";
-
-header("Location:set-pin.php");
-
-exit;
-
-}
-
 if (!$sender) {
     die("Sender account not found.");
 }
