@@ -232,7 +232,7 @@ exit;
 
     $_SESSION['pin_reset'] = true;
 
-    header("Location: set-pin.php");
+    header("Location: set-transaction-pin.php");
 
     exit;
     }
