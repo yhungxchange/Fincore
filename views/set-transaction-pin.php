@@ -136,6 +136,16 @@ Logout
 
 <?php endif; ?>
 
+<?php if (!empty($pinResetMessage)): ?>
+
+<div class="pin-alert">
+
+<?= htmlspecialchars($pinResetMessage) ?>
+
+</div>
+
+<?php endif; ?>
+  
 <form method="POST">
 
 <label>Enter 4-digit PIN</label>
