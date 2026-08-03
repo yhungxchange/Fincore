@@ -63,6 +63,8 @@ Search
 
 <th>Date Joined</th>
 
+<th>Action</th>
+
 </tr>
 
 </thead>
@@ -87,6 +89,17 @@ Search
 
 <td><?= date("d M Y",strtotime($user['created_at'])) ?></td>
 
+<td>
+
+<a class="action-btn view-btn"
+
+href="view-user.php?id=<?= $user['id'] ?>">
+
+👁 View
+
+</a>
+
+  </td>
 </tr>
 
 <?php endforeach; ?>
