@@ -114,10 +114,6 @@ Logout
     <p>Choose your preferred funding method.</p>
 </div>
 
-<div class="notify">
-    <i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
 
 <!-- FUND METHODS -->
