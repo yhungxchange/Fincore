@@ -83,7 +83,7 @@ $stmt->execute([
 
 $title = "Login Password Reset";
 
-$message = "Your FinCore login password has been reset by the administrator. Please contact support to obtain your temporary password.";
+$message = "Your FinCore login password has been reset by the administrator. Please change your login password to ensure account safety.";
 
 $stmt = $pdo->prepare("
     INSERT INTO notifications
