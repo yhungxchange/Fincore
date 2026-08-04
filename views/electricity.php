@@ -112,10 +112,6 @@ Logout
 <p>Pay your electricity bills instantly.</p>
 </div>
 
-<div class="notify">
-<i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
 
 <section class="electricity-section">
