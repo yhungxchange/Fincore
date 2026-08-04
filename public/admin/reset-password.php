@@ -70,7 +70,8 @@ $stmt = $pdo->prepare("
 UPDATE users
 SET
     password_hash = :password,
-    force_password_change = TRUE
+    UPDATE users
+SET password_hash = :password
 WHERE id = :id
 ");
 
