@@ -8,11 +8,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $config = require __DIR__ . '/../../config/database.php';
-
 require __DIR__ . '/../../app/Database.php';
 
 $db = new Database($config);
-
 $pdo = $db->connection();
 
 /*
@@ -22,10 +20,10 @@ $pdo = $db->connection();
 */
 
 $stmt = $pdo->prepare("
-SELECT is_admin
-FROM users
-WHERE id = :id
-LIMIT 1
+    SELECT is_admin
+    FROM users
+    WHERE id = :id
+    LIMIT 1
 ");
 
 $stmt->execute([
@@ -62,22 +60,19 @@ $passwordHash = password_hash($tempPassword, PASSWORD_DEFAULT);
 
 /*
 |--------------------------------------------------------------------------
-| Update Password
+| Update User Password
 |--------------------------------------------------------------------------
 */
 
 $stmt = $pdo->prepare("
-UPDATE users
-SET
-    password_hash = :password,
     UPDATE users
-SET password_hash = :password
-WHERE id = :id
+    SET password_hash = :password
+    WHERE id = :id
 ");
 
 $stmt->execute([
     "password" => $passwordHash,
-    "id"       => $userId
+    "id" => $userId
 ]);
 
 /*
@@ -88,34 +83,34 @@ $stmt->execute([
 
 $title = "Login Password Reset";
 
-$message = "Your FinCore login password has been reset by the administrator. Please contact support to obtain your temporary password and change it immediately after logging in.";
+$message = "Your FinCore login password has been reset by the administrator. Please contact support to obtain your temporary password.";
 
 $stmt = $pdo->prepare("
-INSERT INTO notifications
-(
-    user_id,
-    title,
-    message,
-    type
-)
-VALUES
-(
-    :user_id,
-    :title,
-    :message,
-    'security'
-)
+    INSERT INTO notifications
+    (
+        user_id,
+        title,
+        message,
+        type
+    )
+    VALUES
+    (
+        :user_id,
+        :title,
+        :message,
+        'security'
+    )
 ");
 
 $stmt->execute([
     "user_id" => $userId,
-    "title"   => $title,
+    "title" => $title,
     "message" => $message
 ]);
 
 /*
 |--------------------------------------------------------------------------
-| Store Temporary Password
+| Store Temporary Password For Popup
 |--------------------------------------------------------------------------
 */
 
