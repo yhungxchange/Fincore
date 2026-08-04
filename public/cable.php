@@ -13,6 +13,35 @@ require __DIR__ . '/../app/Database.php';
 $db = new Database($config);
 $pdo = $db->connection();
 
+$userId = $_SESSION['user_id'];
+
+/*
+|--------------------------------------------------------------------------
+| Check Transaction PIN
+|--------------------------------------------------------------------------
+*/
+
+$user = $pdo->prepare("
+SELECT transaction_pin
+FROM users
+WHERE id = :id
+LIMIT 1
+");
+
+$user->execute([
+    'id' => $userId
+]);
+
+$user = $user->fetch(PDO::FETCH_ASSOC);
+
+if (empty($user['transaction_pin'])) {
+
+    header("Location: set-transaction-pin.php");
+
+    exit;
+
+}
+
 $stmt = $pdo->prepare("
 SELECT balance
 FROM wallets
