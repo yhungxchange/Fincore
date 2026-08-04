@@ -112,10 +112,6 @@ Logout
 <p>Subscribe your Cable TV easily.</p>
 </div>
 
-<div class="notify">
-<i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
 
 <section class="cable-section">
