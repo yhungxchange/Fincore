@@ -114,10 +114,6 @@ Logout
 <p>Recharge any mobile network instantly.</p>
 </div>
 
-<div class="notify">
-<i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
 
 <section class="airtime-section">
