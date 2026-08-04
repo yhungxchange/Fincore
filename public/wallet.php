@@ -73,7 +73,7 @@ $stmt = $pdo->prepare("
     SELECT COALESCE(SUM(amount),0) AS total
     FROM transactions
     WHERE user_id = :user_id
-    AND type IN ('transfer','airtime','data','cable','electricity')
+    AND type = 'transfer','airtime','data','cable','electricity'
     AND status = 'successful'
 ");
 
