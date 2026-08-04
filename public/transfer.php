@@ -17,6 +17,35 @@ $pdo = $db->connection();
 
 $userId = $_SESSION['user_id'];
 
+/*
+|--------------------------------------------------------------------------
+| Check Transaction PIN
+|--------------------------------------------------------------------------
+*/
+
+$user = $pdo->prepare("
+SELECT transaction_pin
+FROM users
+WHERE id = :id
+LIMIT 1
+");
+
+$user->execute([
+    'id' => $userId
+]);
+
+$user = $user->fetch(PDO::FETCH_ASSOC);
+
+if (empty($user['transaction_pin'])) {
+
+    header("Location: set-transaction-pin.php");
+
+    exit;
+
+}
+
+$userId = $_SESSION['user_id'];
+
 $stmt = $pdo->prepare("
 SELECT balance
 FROM wallets
