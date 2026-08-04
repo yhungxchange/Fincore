@@ -112,12 +112,6 @@ Logout
 
 </div>
 
-<div class="notify">
-
-<i class="fa-solid fa-bell"></i>
-
-</div>
-
 </header>
 
 <section class="transfer-section">
