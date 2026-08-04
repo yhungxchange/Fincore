@@ -3,97 +3,185 @@
 =========================== */
 
 .manual-funding{
-    display:flex;
-    justify-content:center;
-    margin-top:25px;
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+padding:30px 20px;
+
+margin-top:20px;
+
+box-sizing:border-box;
+
 }
 
 .fund-card{
-    width:100%;
-    max-width:550px;
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+width:100%;
+
+max-width:600px;
+
+margin:auto;
+
+background:#fff;
+
+border-radius:20px;
+
+padding:35px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+box-sizing:border-box;
+
 }
 
 .fund-card h2{
-    font-size:26px;
-    color:#222;
-    margin-bottom:20px;
+
+font-size:26px;
+
+color:#222;
+
+margin-bottom:20px;
+
+text-align:center;
+
 }
 
 .balance-title{
-    color:#777;
-    margin-bottom:8px;
+
+color:#777;
+
+margin-bottom:8px;
+
+text-align:center;
+
 }
 
 .wallet-balance{
-    color:#6C2BD9;
-    font-size:36px;
-    margin-bottom:30px;
-    font-weight:700;
+
+color:#6C2BD9;
+
+font-size:36px;
+
+margin-bottom:30px;
+
+font-weight:700;
+
+text-align:center;
+
 }
 
 .fund-card label{
-    display:block;
-    margin-bottom:10px;
-    font-weight:600;
-    color:#333;
+
+display:block;
+
+margin-bottom:10px;
+
+font-weight:600;
+
+color:#333;
+
 }
 
 .fund-card input{
-    width:100%;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
-    margin-bottom:25px;
+
+width:100%;
+
+padding:15px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+font-size:16px;
+
+outline:none;
+
+margin-bottom:25px;
+
+box-sizing:border-box;
+
 }
 
 .fund-card input:focus{
-    border-color:#6C2BD9;
+
+border-color:#6C2BD9;
+
 }
 
 .quick-amount{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-bottom:30px;
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:12px;
+
+margin-bottom:30px;
+
 }
 
 .quick-amount button{
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#f3ebff;
-    color:#6C2BD9;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+background:#f3ebff;
+
+color:#6C2BD9;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
 .quick-amount button:hover{
-    background:#6C2BD9;
-    color:#fff;
+
+background:#6C2BD9;
+
+color:#fff;
+
 }
 
 .continue-btn{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:14px;
-    background:#6C2BD9;
-    color:#fff;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+background:#6C2BD9;
+
+color:#fff;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
 .continue-btn:hover{
-    background:#5521ad;
+
+background:#5521ad;
+
 }
 
 /* ===========================
@@ -102,16 +190,54 @@
 
 @media(max-width:768px){
 
+.manual-funding{
+
+padding:15px;
+
+margin-top:10px;
+
+}
+
 .fund-card{
-    padding:25px;
+
+padding:25px;
+
+max-width:100%;
+
 }
 
 .wallet-balance{
-    font-size:30px;
+
+font-size:30px;
+
 }
 
 .quick-amount{
-    grid-template-columns:repeat(2,1fr);
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:480px){
+
+.quick-amount{
+
+grid-template-columns:1fr;
+
+}
+
+.fund-card h2{
+
+font-size:22px;
+
+}
+
+.wallet-balance{
+
+font-size:28px;
+
 }
 
 }
