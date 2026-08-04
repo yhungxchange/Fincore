@@ -116,6 +116,12 @@ style="background:#ff9800;">
 
  </a>
 
+<a href="reset-password.php?id=<?= $user['id'] ?>"
+class="search-btn"
+style="background:#dc3545;">
+🔐 Reset Login Password
+</a>
+ 
 <a href="users.php"
 class="search-btn"
 style="background:#888;">
