@@ -114,10 +114,6 @@ Logout
 <p>Manage your account information and security.</p>
 </div>
 
-<div class="notify">
-<i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
 
 <section class="profile-section">
