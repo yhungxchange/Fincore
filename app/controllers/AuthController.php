@@ -228,15 +228,6 @@ exit;
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $user['username'];
 
-    if (empty($user['transaction_pin'])) {
-
-    $_SESSION['pin_reset'] = true;
-
-    header("Location: set-transaction-pin.php");
-
-    exit;
-    }
-
     header("Location: dashboard.php");
     exit;
 }
