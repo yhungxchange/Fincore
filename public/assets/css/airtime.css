@@ -111,7 +111,7 @@ cursor:pointer;
 background:#5521ad;
 }
 
-@media(max-width:768px){
+@media(max-width:600px){
 
 .quick-amounts{
 grid-template-columns:repeat(2,1fr);
