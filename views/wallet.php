@@ -113,12 +113,7 @@ Logout
     <p>Manage your wallet and transactions.</p>
 </div>
 
-<div class="notify">
-    <i class="fa-solid fa-bell"></i>
-</div>
-
 </header>
-
 
 <!-- WALLET STATISTICS -->
 
