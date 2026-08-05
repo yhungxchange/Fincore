@@ -93,8 +93,9 @@ $stmt->execute([
 
 $totalSpent = $stmt->fetch(PDO::FETCH_ASSOC)['total_spent'];
 
+/*
 |--------------------------------------------------------------------------
-| Recent Transactions
+| Recent Transactions 
 |--------------------------------------------------------------------------
 */
 
