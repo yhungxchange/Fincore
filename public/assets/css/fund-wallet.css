@@ -1,3 +1,21 @@
+.top-header{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+margin-bottom:30px;
+
+}
+
+.top-header .welcome{
+
+flex:1;
+
+}
+
 /* ===========================
    FUND WALLET
 =========================== */
