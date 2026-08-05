@@ -744,8 +744,6 @@ transition:.3s;
 
 .support-btn:hover{
 
-transform:scale(1.1);
-
-background:#1ebe5d;
+transform:scale(1.08);
 
 }
