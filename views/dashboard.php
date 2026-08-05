@@ -415,6 +415,8 @@ Quick Services
     <i class="fab fa-whatsapp"></i>
 
 </a>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 </body>
 
