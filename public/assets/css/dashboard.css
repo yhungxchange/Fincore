@@ -702,4 +702,42 @@ padding:10px 14px;
 font-size:13px;
 }
 
+/* ==========================
+   WHATSAPP SUPPORT BUTTON
+========================== */
+
+.support-btn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:65px;
+    height:65px;
+    background:#25D366;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+    text-decoration:none;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    z-index:9999;
+    transition:.3s;
+}
+
+.support-btn:hover{
+    transform:scale(1.1);
+    background:#20c55a;
+}
+
+@media(max-width:768px){
+
+.support-btn{
+    width:58px;
+    height:58px;
+    right:18px;
+    bottom:18px;
+    font-size:28px;
+}
+
 }
