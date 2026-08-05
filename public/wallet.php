@@ -85,7 +85,7 @@ $stmt->execute([
     "user_id" => $_SESSION['user_id']
 ]);
 
-$totalSpent = $stmt->fetch(PDO::FETCH_ASSOC)['total_spent'];
+$totalSpent = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
 /*
 |--------------------------------------------------------------------------
 | Recent Transactions
