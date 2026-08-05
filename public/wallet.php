@@ -70,19 +70,22 @@ $totalFunding = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 */
 
 $stmt = $pdo->prepare("
-    SELECT COALESCE(SUM(amount),0) AS total
-    FROM transactions
-    WHERE user_id = :user_id
-    AND type IN ('transfer','airtime','data','cable','electricity')
-    AND status = 'successful'
+SELECT COALESCE(SUM(amount),0) AS total_spent
+FROM transactions
+WHERE user_id = :user_id
+AND status = 'success'
+AND type NOT IN (
+    'funding',
+    'admin_credit',
+    'Transfer In'
+)
 ");
 
 $stmt->execute([
-    'user_id' => $userId
+    "user_id" => $_SESSION['user_id']
 ]);
 
-$totalSpent = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
-
+$totalSpent = $stmt->fetch(PDO::FETCH_ASSOC)['total_spent'];
 /*
 |--------------------------------------------------------------------------
 | Recent Transactions
