@@ -65,8 +65,6 @@ $notification = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $notificationCount = $notification['total'] ?? 0;
 
-<?php
-
 $stmt = $pdo->prepare("
 SELECT
 DATE(created_at) AS day,
@@ -118,7 +116,5 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC))
     $chartLabels[] = date("M d", strtotime($row['day']));
     $chartData[] = (float)$row['total'];
 }
-
-?>
 
 require __DIR__ . '/../views/dashboard.php';
