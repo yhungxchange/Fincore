@@ -290,73 +290,6 @@ Quick Services
 
 <canvas id="walletChart" height="120"></canvas>
 
-<script>
-const ctx = document.getElementById('walletChart').getContext('2d');
-
-new Chart(ctx,{
-    type:'line',
-
-    data:{
-        labels:<?= json_encode($chartLabels) ?>,
-
-        datasets:[{
-            label:'Wallet Activity',
-
-            data:<?= json_encode($chartData) ?>,
-
-            borderColor:'#6D4DFF',
-
-            backgroundColor:'rgba(109,77,255,.15)',
-
-            fill:true,
-
-            tension:.4,
-
-            pointRadius:5,
-
-            pointBackgroundColor:'#6D4DFF',
-
-            borderWidth:3
-        }]
-    },
-
-    options:{
-
-        responsive:true,
-
-        maintainAspectRatio:false,
-
-        plugins:{
-            legend:{
-                display:false
-            }
-        },
-
-        scales:{
-
-            x:{
-                grid:{
-                    display:false
-                }
-            },
-
-            y:{
-                beginAtZero:true,
-
-                ticks:{
-                    callback:function(value){
-                        return "₦"+value;
-                    }
-                }
-            }
-
-        }
-
-    }
-
-});
-</script>
-
 </div>
 
 </section>
@@ -470,12 +403,52 @@ new Chart(ctx,{
 <a href="https://wa.me/2349061389641?text=Hello%20FinCore%20Support,%0AI%20need%20assistance%20with%20my%20account."
    class="support-btn"
    target="_blank">
-
     <i class="fab fa-whatsapp"></i>
-
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('walletChart').getContext('2d');
+
+new Chart(ctx,{
+    type:'line',
+    data:{
+        labels:<?= json_encode($chartLabels) ?>,
+        datasets:[{
+            label:'Wallet Activity',
+            data:<?= json_encode($chartData) ?>,
+            borderColor:'#6D4DFF',
+            backgroundColor:'rgba(109,77,255,.15)',
+            fill:true,
+            tension:.4,
+            pointRadius:5,
+            pointBackgroundColor:'#6D4DFF',
+            borderWidth:3
+        }]
+    },
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+            legend:{display:false}
+        },
+        scales:{
+            x:{
+                grid:{display:false}
+            },
+            y:{
+                beginAtZero:true,
+                ticks:{
+                    callback:function(value){
+                        return "₦"+value;
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
     
 </body>
 
