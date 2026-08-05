@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$configFile = __DIR__ . '/config/database.php';
+$configFile = __DIR__ . '/../config/database.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +32,4 @@ if (file_exists($configFile)) {
 |--------------------------------------------------------------------------
 */
 
-require __DIR__ . '/views/install.view.php';
+require __DIR__ . '/../views/install.view.php';
