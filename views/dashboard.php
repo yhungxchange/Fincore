@@ -406,6 +406,14 @@ Quick Services
 
 </main>
 
+<a href="https://wa.me/2349061389641"
+   class="support-btn"
+   target="_blank">
+
+    <i class="fab fa-whatsapp"></i>
+
+    </a>
+    
 </div>
 
 <script src="/assets/js/dashboard.js"></script>
