@@ -288,15 +288,74 @@ Quick Services
 
 <div class="analytics-card">
 
-<div class="analytics-placeholder">
+<canvas id="walletChart" height="120"></canvas>
 
-<i class="fa-solid fa-chart-line"></i>
+<script>
+const ctx = document.getElementById('walletChart').getContext('2d');
 
-<h3>Analytics Coming Soon</h3>
+new Chart(ctx,{
+    type:'line',
 
-<p>Your wallet activity chart will appear here.</p>
+    data:{
+        labels:<?= json_encode($chartLabels) ?>,
 
-</div>
+        datasets:[{
+            label:'Wallet Activity',
+
+            data:<?= json_encode($chartData) ?>,
+
+            borderColor:'#6D4DFF',
+
+            backgroundColor:'rgba(109,77,255,.15)',
+
+            fill:true,
+
+            tension:.4,
+
+            pointRadius:5,
+
+            pointBackgroundColor:'#6D4DFF',
+
+            borderWidth:3
+        }]
+    },
+
+    options:{
+
+        responsive:true,
+
+        maintainAspectRatio:false,
+
+        plugins:{
+            legend:{
+                display:false
+            }
+        },
+
+        scales:{
+
+            x:{
+                grid:{
+                    display:false
+                }
+            },
+
+            y:{
+                beginAtZero:true,
+
+                ticks:{
+                    callback:function(value){
+                        return "₦"+value;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+});
+</script>
 
 </div>
 
