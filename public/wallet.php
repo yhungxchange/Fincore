@@ -70,7 +70,7 @@ $totalFunding = $stmt->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
 */
 
 $stmt = $pdo->prepare("
-    SELECT COALESCE(SUM(amount),0) AS total
+    SELECT COALESCE(SUM(amount),0) AS total_spent
     FROM transactions
     WHERE user_id = :user_id
     AND type IN ('transfer','airtime','data','cable','electricity')
