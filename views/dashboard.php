@@ -406,18 +406,16 @@ Quick Services
 
 </main>
 
-<a href="https://wa.me/2349061389641"
+<script src="/assets/js/dashboard.js"></script>
+
+<a href="https://wa.me/2349061389641?text=Hello%20FinCore%20Support,%0AI%20need%20assistance%20with%20my%20account."
    class="support-btn"
    target="_blank">
 
     <i class="fab fa-whatsapp"></i>
 
-    </a>
+</a>
     
-</div>
-
-<script src="/assets/js/dashboard.js"></script>
-
 </body>
 
 </html>
