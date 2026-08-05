@@ -435,8 +435,14 @@ margin-bottom:35px;
 .analytics-card{
 background:#fff;
 border-radius:22px;
-padding:30px;
+padding:25px;
+height:360px;
 box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+
+#walletChart{
+width:100%!important;
+height:300px!important;
 }
 
 .analytics-placeholder{
