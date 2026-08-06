@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FinCore Analytics</title>
+<title>Wallet Analytics</title>
 
 <link rel="stylesheet" href="/assets/css/dashboard.css">
 <link rel="stylesheet" href="/assets/css/analytics.css">
@@ -14,65 +14,156 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
 <div class="dashboard">
 
+<aside id="sidebar" class="sidebar">
+
+<div class="logo">
+<img src="/assets/images/logo.png">
+<h2>FinCore</h2>
+</div>
+
+<nav>
+
+<a href="dashboard.php">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+
+<a href="wallet.php">
+<i class="fa-solid fa-wallet"></i>
+Wallet
+</a>
+
+<a href="analytics.php" class="active">
+<i class="fa-solid fa-chart-pie"></i>
+Analytics
+</a>
+
+<a href="logout.php">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</nav>
+
+</aside>
+
 <main class="content">
 
 <header class="top-header">
+
+<button id="menuBtn" class="menu-btn">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
 
 <div class="welcome">
 
 <h1>Wallet Analytics</h1>
 
-<p>Track your income and spending.</p>
+<p>Income vs Spending Overview</p>
 
 </div>
 
 </header>
 
-<section class="analytics-summary">
+<div class="analytics-wrapper">
 
-<div class="summary-card income">
+<!-- LEFT -->
 
-<i class="fa-solid fa-arrow-down"></i>
+<div class="chart-card">
 
-<h4>Money In</h4>
+<h2>Donut Chart</h2>
 
-<h2>₦<?= number_format($moneyIn,2) ?></h2>
+<p>Income vs Spending</p>
 
-</div>
-
-<div class="summary-card expense">
-
-<i class="fa-solid fa-arrow-up"></i>
-
-<h4>Money Out</h4>
-
-<h2>₦<?= number_format($moneyOut,2) ?></h2>
+<canvas id="walletDonut"></canvas>
 
 </div>
 
-<div class="summary-card net">
+<!-- RIGHT -->
 
-<i class="fa-solid fa-wallet"></i>
+<div class="summary-card">
 
-<h4>Net Cash Flow</h4>
+<div class="money-row income">
+
+<div>
+
+<div class="dot green"></div>
+
+<h3>Money In</h3>
+
+<p>Funding + incoming transfers</p>
+
+</div>
 
 <h2>
-₦<?= number_format($netFlow,2) ?>
+₦<?= number_format($moneyIn,2) ?>
 </h2>
 
 </div>
 
-</section>
+<hr>
+
+<div class="money-row expense">
+
+<div>
+
+<div class="dot red"></div>
+
+<h3>Money Out</h3>
+
+<p>Airtime, data, bills & transfers</p>
+
+</div>
+
+<h2>
+₦<?= number_format($moneyOut,2) ?>
+</h2>
+
+</div>
+
+<hr>
+
+<div class="cash-flow">
+
+<h2>Net Cash Flow</h2>
+
+<h1>
+₦<?= number_format($cashFlow,2) ?>
+</h1>
+
+<p>
+
+<?= $cashFlow >= 0
+
+? "You received more than you spent."
+
+: "You spent more than you received."
+
+?>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </main>
 
 </div>
+
+<script src="/assets/js/dashboard.js"></script>
 
 </body>
 
