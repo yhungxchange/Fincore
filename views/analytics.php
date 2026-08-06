@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Wallet Analytics</title>
@@ -22,11 +23,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <div class="dashboard">
 
+<!-- SIDEBAR -->
+
 <aside id="sidebar" class="sidebar">
 
 <div class="logo">
+
 <img src="/assets/images/logo.png">
+
 <h2>FinCore</h2>
+
 </div>
 
 <nav>
@@ -55,6 +61,8 @@ Logout
 
 </aside>
 
+<!-- MAIN -->
+
 <main class="content">
 
 <header class="top-header">
@@ -75,90 +83,111 @@ Logout
 
 </header>
 
-<div class="analytics-wrapper">
+<!-- EVERYTHING ELSE WILL ENTER HERE -->
 
-<!-- LEFT -->
+<div class="analytics-top">
 
-<div class="chart-card">
+    <!-- LEFT -->
 
-<h2>Donut Chart</h2>
+    <div class="analytics-card chart-card">
 
-<p>Income vs Spending</p>
+        <h2>Income vs Spending</h2>
 
-<canvas id="walletDonut"></canvas>
+        <p>This Month</p>
+
+        <canvas id="donutChart"></canvas>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="analytics-card summary-card">
+
+        <!-- Money In -->
+
+        <div class="summary-item">
+
+            <div class="summary-left">
+
+                <span class="badge income"></span>
+
+                <div>
+
+                    <h3>Money In</h3>
+
+                    <small>Funding + Incoming Transfers</small>
+
+                </div>
+
+            </div>
+
+            <h2 class="income-text">
+
+                ₦<?= number_format($moneyIn,2) ?>
+
+            </h2>
+
+        </div>
+
+        <hr>
+
+        <!-- Money Out -->
+
+        <div class="summary-item">
+
+            <div class="summary-left">
+
+                <span class="badge expense"></span>
+
+                <div>
+
+                    <h3>Money Out</h3>
+
+                    <small>Airtime, Data, Bills & Transfers</small>
+
+                </div>
+
+            </div>
+
+            <h2 class="expense-text">
+
+                ₦<?= number_format($moneyOut,2) ?>
+
+            </h2>
+
+        </div>
+
+        <hr>
+
+        <!-- Cash Flow -->
+
+        <div class="cash-flow">
+
+            <h3>Net Cash Flow</h3>
+
+            <h1 class="<?= $cashFlow >= 0 ? 'income-text' : 'expense-text' ?>">
+
+                <?= $cashFlow >= 0 ? '+' : '-' ?>
+
+                ₦<?= number_format(abs($cashFlow),2) ?>
+
+            </h1>
+
+            <p>
+
+                <?= $cashFlow >= 0
+                    ? "You received more than you spent."
+                    : "You spent more than you received."
+                ?>
+
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
-
-<!-- RIGHT -->
-
-<div class="summary-card">
-
-<div class="money-row income">
-
-<div>
-
-<div class="dot green"></div>
-
-<h3>Money In</h3>
-
-<p>Funding + incoming transfers</p>
-
-</div>
-
-<h2>
-₦<?= number_format($moneyIn,2) ?>
-</h2>
-
-</div>
-
-<hr>
-
-<div class="money-row expense">
-
-<div>
-
-<div class="dot red"></div>
-
-<h3>Money Out</h3>
-
-<p>Airtime, data, bills & transfers</p>
-
-</div>
-
-<h2>
-₦<?= number_format($moneyOut,2) ?>
-</h2>
-
-</div>
-
-<hr>
-
-<div class="cash-flow">
-
-<h2>Net Cash Flow</h2>
-
-<h1>
-₦<?= number_format($cashFlow,2) ?>
-</h1>
-
-<p>
-
-<?= $cashFlow >= 0
-
-? "You received more than you spent."
-
-: "You spent more than you received."
-
-?>
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+  
 </main>
 
 </div>
