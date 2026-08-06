@@ -1,145 +1,159 @@
-body{
-background:#f5f6fb;
-font-family:Arial,sans-serif;
-}
-
-.analytics-wrapper{
+.analytics-top{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:25px;
 margin-top:30px;
 }
 
-.chart-card,
-.summary-card{
+.analytics-card{
 background:#fff;
 border-radius:22px;
-padding:25px;
-box-shadow:0 8px 25px rgba(0,0,0,.06);
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.chart-card{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
 
 .chart-card h2{
 font-size:28px;
-font-weight:700;
 margin-bottom:5px;
+color:#222;
 }
 
 .chart-card p{
+font-size:15px;
 color:#777;
 margin-bottom:25px;
 }
 
-#walletDonut{
-width:100%;
-max-width:320px;
-margin:auto;
+#donutChart{
+width:280px !important;
+height:280px !important;
 }
 
-.money-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 0;
-}
-
-.money-row h3{
-font-size:28px;
-margin:0;
-}
-
-.money-row p{
-font-size:15px;
-color:#777;
-margin-top:6px;
-}
-
-.money-row h2{
-font-size:38px;
-font-weight:700;
-}
-
-.dot{
-width:16px;
-height:16px;
-border-radius:50%;
-display:inline-block;
-margin-right:12px;
-}
-
-.green{
-background:#18c75a;
-}
-
-.red{
-background:#ff3b30;
-}
-
-.money-row div:first-child{
+.summary-card{
 display:flex;
 flex-direction:column;
 }
 
-.money-row div:first-child .dot{
-position:absolute;
-margin-left:-28px;
-margin-top:12px;
+.summary-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.summary-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.summary-left h3{
+font-size:24px;
+margin:0;
+color:#222;
+}
+
+.summary-left small{
+font-size:14px;
+color:#888;
+}
+
+.badge{
+width:18px;
+height:18px;
+border-radius:50%;
+display:block;
+}
+
+.income{
+background:#2ECC71;
+}
+
+.expense{
+background:#FF4D4F;
+}
+
+.income-text{
+color:#2ECC71;
+font-weight:700;
+}
+
+.expense-text{
+color:#FF4D4F;
+font-weight:700;
+}
+
+.summary-item h2{
+font-size:34px;
+margin:0;
 }
 
 .summary-card hr{
 border:none;
 height:1px;
-background:#ececec;
-margin:10px 0;
+background:#ECECEC;
+margin:0;
 }
 
 .cash-flow{
-padding-top:20px;
+padding-top:25px;
 }
 
-.cash-flow h2{
-font-size:34px;
+.cash-flow h3{
+font-size:22px;
 margin-bottom:10px;
 }
 
 .cash-flow h1{
 font-size:50px;
-font-weight:700;
-color:#18c75a;
 margin-bottom:10px;
 }
 
 .cash-flow p{
-color:#666;
 font-size:15px;
+color:#666;
 line-height:1.6;
 }
 
 @media(max-width:900px){
 
-.analytics-wrapper{
+.analytics-top{
 
 grid-template-columns:1fr;
 
 }
 
-.money-row{
+.summary-item{
 
 flex-direction:column;
 align-items:flex-start;
+gap:12px;
 
 }
 
-.money-row h2{
+.summary-item h2{
 
-margin-top:15px;
-
-font-size:32px;
+font-size:28px;
 
 }
 
 .cash-flow h1{
 
-font-size:40px;
+font-size:38px;
+
+}
+
+#donutChart{
+
+width:220px !important;
+height:220px !important;
 
 }
 
